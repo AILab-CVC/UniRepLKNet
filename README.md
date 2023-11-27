@@ -125,9 +125,9 @@ Code, weights and configs will be released in one day.
 | UniRepLKNet-T | 1280x800 | 51.7 | 44.9 | 89M  | 749G | TBA |
 | UniRepLKNet-S | 1280x800 | 53.0 | 45.9 | 113M  | 835G | TBA |
 | UniRepLKNet-S_22K | 1280x800 | 54.3 | 47.1 | 113M  | 835G | TBA |
-| UniRepLKNet-B | 1280x800 | 54.8 | 47.4 | 155M  | 978G | TBA |
-| UniRepLKNet-L | 1280x800 | 55.8 | 48.4 | 276M  | 1385G | TBA |
-| UniRepLKNet-XL | 1280x800 | 56.4 | 49.0 | 443M  | 1952G | TBA |
+| UniRepLKNet-B_22K | 1280x800 | 54.8 | 47.4 | 155M  | 978G | TBA |
+| UniRepLKNet-L_22K | 1280x800 | 55.8 | 48.4 | 276M  | 1385G | TBA |
+| UniRepLKNet-XL_22K | 1280x800 | 56.4 | 49.0 | 443M  | 1952G | TBA |
 
 ### ADE-20K Semantic Segmentation
 
@@ -138,9 +138,13 @@ Code, weights and configs will be released in one day.
 | UniRepLKNet-T | 512x512 | 48.6/49.1 | 61M | 946G  | TBA |
 | UniRepLKNet-S | 512x512 | 50.5/51.0 | 86M  | 1036G | TBA |
 | UniRepLKNet-S_22K | 640x640 | 51.9/52.7 | 86M  | 1036G | TBA |
-| UniRepLKNet-B | 640x640 | 53.5/53.9 | 130M  | 1850G | TBA |
-| UniRepLKNet-L | 640x640 | 54.5/55.0 | 254M  | 2507G | TBA |
-| UniRepLKNet-XL | 640x640 | 55.2/55.6 | 425M  | 3420G | TBA |
+| UniRepLKNet-B_22K | 640x640 | 53.5/53.9 | 130M  | 1850G | TBA |
+| UniRepLKNet-L_22K | 640x640 | 54.5/55.0 | 254M  | 2507G | TBA |
+| UniRepLKNet-XL_22K | 640x640 | 55.2/55.6 | 425M  | 3420G | TBA |
+
+## Universal perception on audio, video, point cloud, and time-series tasks
+
+Code, models, and documents of audio, video, point cloud, and time-series tasks will be released in one day.
 
 [//]: # (## Start Up)
 
@@ -161,6 +165,7 @@ Code, weights and configs will be released in one day.
 [//]: # (Audio | [Doc]&#40;./Audio/README.md&#41;)
 
 [//]: # (Time-Series | [Doc]&#40;./Time-Series/README.md&#41;)
+
 
 
 ## Use an efficient large-kernel convolution with PyTorch
