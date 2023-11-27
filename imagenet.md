@@ -170,29 +170,3 @@ python -m torch.distributed.launch --nproc_per_node=8 main.py \
 
 ## Acknowledgement
 The released PyTorch ImageNet training script is based on the code of [ConvNeXt](https://github.com/facebookresearch/ConvNeXt), which was built using the [timm](https://github.com/rwightman/pytorch-image-models) library, [DeiT](https://github.com/facebookresearch/deit) and [BEiT](https://github.com/microsoft/unilm/tree/master/beit) repositories.
-
-## Semantic Segmentation and Object Detection
-
-We use MMSegmentation and MMDetection frameworks. Just clone MMSegmentation or MMDetection, and
-
-1. Put ```segmentation/replknet.py``` into ```mmsegmentation/mmseg/models/backbones/``` or ```mmdetection/mmdet/models/backbones/```. The only difference between ```segmentation/replknet.py``` and ```replknet.py``` is the ```@BACKBONES.register_module```.
-2. Add RepLKNet into ```mmsegmentation/mmseg/models/backbones/__init__.py``` or ```mmdetection/mmdet/models/backbones/__init__.py```. That is
-  ```
-  ...
-  from .replknet import RepLKNet
-  __all__ = ['ResNet', ..., 'RepLKNet']
-  ```
-3. Put ```segmentation/configs/*.py``` into ```mmsegmentation/configs/replknet/``` or ```detection/configs/*.py``` into ```mmdetection/configs/replknet/```
-4. Download and use our weights. For examples, to evaluate RepLKNet-31B + UperNet on Cityscapes
-  ```
-  python -m torch.distributed.launch --nproc_per_node=8 tools/test.py configs/replknet/RepLKNet-31B_1Kpretrain_upernet_80k_cityscapes_769.py RepLKNet-31B_ImageNet-1K_UperNet_Cityscapes.pth --launcher pytorch --eval mIoU
-  ```
-  or RepLKNet-31B + Cascade Mask R-CNN on COCO
-  ```
-  python -m torch.distributed.launch --nproc_per_node=8 tools/test.py configs/replknet/RepLKNet-31B_22Kpretrain_cascade_mask_rcnn_3x_coco.py RepLKNet-31B_ImageNet-22K_CascMaskRCNN_COCO.pth --eval bbox --launcher pytorch
-  ```
-5. Or you may finetune our released pretrained weights (see the tips below about the batch size and number of iterations)
-  ```
-  python -m torch.distributed.launch --nproc_per_node=8 tools/train.py configs/replknet/some_config.py --launcher pytorch --options model.backbone.pretrained=some_pretrained_weights.pth
-  ```
-  
