@@ -40,9 +40,8 @@
 </div>
 
 ## Motivation 
-* we note that most architectures of the existing large-kernel ConvNets simply follow other models, *e.g.*, RepLKNet follows the architecture
-of Swin Transformer, and SLaK follows ConvNeXt, which is a powerful architecture with mediumsized (7×7) kernels. **The architectural design for largekernel ConvNets remains under-explored.**
-* The *universal perception ability* of Transformers is sparking in multimodal research areas (image, audio, video, time-series, *etc*). We observe that large-kernel ConvNets show similar Effective Receptive Field as vision transformers. We are curious whether ConvNets can also deliver **universal perception ability across multiple modalities with a unified architecture**.
+* We note that most architectures of the existing large-kernel ConvNets simply follow other models. **The architectural design for largekernel ConvNets remains under-explored.**
+* The *universal perception ability* of Transformers is sparking in multimodal research areas (image, audio, video, time-series, *etc*). We are curious whether ConvNets can also deliver **universal perception ability across multiple modalities with a unified architecture**.
 
 ## Highlights
 
@@ -62,7 +61,7 @@ competitors.
 unlocking the exceptional performance of ConvNets in domains
 where they were originally not proficient. With certain
 modality-related preprocessing approaches, the proposed
-model achieves state-of-the-art performance on timeseries
+model achieves state-of-the-art performance on time-series
 forecasting and audio recognition tasks even without
 modality-specific customization to the architecture.
 
@@ -76,8 +75,8 @@ and broad utility across different modalities and tasks.**
 
 - [x] Model code
 - [x] Most of the ImageNet-1K and ImageNet-22K pretrained weights
-- [x] Weights released on both google drive (see this page) and huggingface (see unireplknet.py)
-- [x] PyTorch large-kernel conv impl
+- [x] Weights released on both Google Drive (see this page) and hugging face (see unireplknet.py)
+- [x] PyTorch efficient large-kernel conv implementation
 - [x] ImageNet training code
 - [ ] Code, models, and documents of audio, video, point cloud, and time-series tasks (will be released in one day)
 - [ ] Better documentation
@@ -88,7 +87,7 @@ and broad utility across different modalities and tasks.**
 
 For training or finetuning UniRepLKNets on ImageNet-1K or 22K, see [THIS DOC](imagenet.md)
 
-### ImageNet-1K Fine-tuned Weights
+### ImageNet-1K Pretrained Weights
 
 | name | resolution |acc@1 | #params | FLOPs | Weights |
 |:---:|:---:|:---:|:---:| :---:|:---:|
@@ -101,14 +100,14 @@ For training or finetuning UniRepLKNets on ImageNet-1K or 22K, see [THIS DOC](im
 
 ### ImageNet-22K Pretrained Weights
 
-| name | resolution |acc@1 | #params | FLOPs | ckpt |
-|:---:|:---:|:---:|:---:| :---:| :---:|
-| UniRepLKNet-S | 384x384 | 86.4 | 56M | 26.7G  | TBA |
-| UniRepLKNet-B | 384x384 | 87.4 | 98M   | 47.2G   | [ckpt](https://drive.google.com/file/d/1t1txZOTpwXGUMVsqyUxpzE5EGLqMX5li/view?usp=drive_link)|
-| UniRepLKNet-L | 384x384 | 87.9 | 218M  | 105.4G   | [ckpt](https://drive.google.com/file/d/1PEY474n6a7pZ3vJitsU7ZLzwBI00pf7u/view?usp=drive_link)|
-| UniRepLKNet-XL | 384x384 | 88.0 | 386M  | 187G  | [ckpt](https://drive.google.com/file/d/1OP7I0jabljm8LKXTypk4HDmF9dQQqYib/view?usp=drive_link)|
+| name | resolution | #params | FLOPs | ckpt |
+|:---:|:---:|:---:|:---:| :---:|
+| UniRepLKNet-S | 224x224 | 56M | 26.7G  | TBA |
+| UniRepLKNet-B | 224x224 | 98M   | 47.2G   | [ckpt](https://drive.google.com/file/d/1t1txZOTpwXGUMVsqyUxpzE5EGLqMX5li/view?usp=drive_link)|
+| UniRepLKNet-L | 192x192 | 218M  | 105.4G   | [ckpt](https://drive.google.com/file/d/1PEY474n6a7pZ3vJitsU7ZLzwBI00pf7u/view?usp=drive_link)|
+| UniRepLKNet-XL | 192x192 | 386M  | 187G  | [ckpt](https://drive.google.com/file/d/1OP7I0jabljm8LKXTypk4HDmF9dQQqYib/view?usp=drive_link)|
 
-### ImageNet-22K Pretrained & ImageNet-1K Fine-tuned Weights
+### Pretrained on ImageNet-22K then finetuned on ImageNet-1K
 
 | name | resolution |acc@1 | #params | FLOPs | ckpt |
 |:---:|:---:|:---:|:---:| :---:| :---:|
@@ -118,6 +117,8 @@ For training or finetuning UniRepLKNets on ImageNet-1K or 22K, see [THIS DOC](im
 | UniRepLKNet-XL | 384x384 | 88.0 | 386M  | 187G  | TBA|
 
 ### COCO Object Detection
+
+Code, weights and configs will be released in one day.
 
 | name | resolution |box mAP | mask mAP | #params | FLOPs | Weights |
 |:---:|:---:|:---:|:---:| :---:|:---:|:---:|
@@ -129,6 +130,8 @@ For training or finetuning UniRepLKNets on ImageNet-1K or 22K, see [THIS DOC](im
 | UniRepLKNet-XL | 1280x800 | 56.4 | 49.0 | 443M  | 1952G | TBA |
 
 ### ADE-20K Semantic Segmentation
+
+Code, weights and configs will be released in one day.
 
 | name | resolution |mIoU (ss/ms) | #params | FLOPs | Weights |
 |:---:|:---:|:---:|:---:| :---:|:---:|
