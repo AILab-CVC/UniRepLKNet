@@ -1,0 +1,73 @@
+DATA:
+  data_name: modelnet
+  data_root: ./data/ModelNet40
+  classes: 40
+  npoints: 4096
+  use_normals: False
+
+BaseModel:
+  base_model_variant: convnext_large
+  head_type: pooling_mlp  # linear pooling_mlp mlp
+  mlp_dropout_ratio: 0.5
+  mlp_mid_channels: [512, 256]
+  view_feature: 1536
+  num_features: 1024
+  num_head_features: 4096
+  obj_size: 224
+  img_size: 224
+  checkpoint_path:
+
+Enc:
+  atten_fusion: True
+  local_size: 32
+  trans_dim: 8
+  graph_dim: 64
+  imgblock_dim: 64
+  imagenet_default_mean: [0.485, 0.456, 0.406]
+  imagenet_default_std: [0.229, 0.224, 0.225]
+
+TRAIN:
+  update_type: norm
+  label_smoothing: True
+
+  train_gpu: [0,1,2,3,4,5,6,7]
+  workers: 4
+  batch_size: 48
+  batch_size_val: 16
+  num_shots: 16
+  num_views: 8
+
+  lr: 5e-4
+  weight_decay: 0.05
+  epochs: 300
+  val_epoch: 200
+  last_epochs: 30
+  start_epoch: 0
+  warmup_epochs: 0
+  scheduler: CosLR
+  amp: False
+
+  manual_seed: 1463
+  print_freq: 40
+  save_freq: 5
+  save_path: checkpoints/Pretrain_ModelNet40_4096_ConvNeXt-L-8-view-bz-48
+  pretrained: 
+  weight:  # path to initial weight (default: none)
+  resume: 
+  evaluate: True  # evaluate on validation set, extra gpu memory needed and small batch_size_val is recommend
+  eval_freq: 5
+
+Distributed:
+  dist_url: tcp://127.0.0.1:4789
+  dist_backend: 'nccl'
+  multiprocessing_distributed: True
+  world_size: 1
+  rank: 0
+
+
+TEST:
+  test_workers: 0
+  test_gpu: [6]
+  test_batch_size: 12
+  model_path: checkpoint_modelnet40_convnext_atten_fusion_conv_fusion/experiment_convnext-L_fewshot_4_view_16_shot_transformer_32token_GELU_linear/model/model_best.pth
+  save_folder:

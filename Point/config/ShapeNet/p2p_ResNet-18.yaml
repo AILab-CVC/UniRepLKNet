@@ -1,0 +1,75 @@
+DATA:
+  data_name: shapenet
+  data_root: /nvme_disk/phy/ICCV_2023/P2P_ICCV/data
+  classes: 16
+  npoints: 2048
+  use_normals: False
+
+BaseModel:
+  base_model_variant: resnet_18_torchvision
+  head_type: pooling_mlp  # linear  pooling_mlp(PoolingClsHead no adaptor)  token_cls_head token_cls_head_v2
+  num_features: 1024
+  view_feature: 512
+  obj_size: 224
+  img_size: 224
+  sub_img_size: 244
+  checkpoint_path:
+
+Enc:
+  atten_fusion: True
+  local_size: 32
+  kernel_size: 7
+  trans_dim: 8
+  graph_dim: 64
+  imgblock_dim: 64
+  imagenet_default_mean: [0.485, 0.456, 0.406]
+  imagenet_default_std: [0.229, 0.224, 0.225]
+
+Head:
+  head_drop_rate: 0.1
+  num_patches: 7
+
+TRAIN:
+  update_type: bn
+  label_smoothing: True
+  train_gpu: [4]
+  workers: 4
+  batch_size: 16
+  batch_size_val: 16
+  num_shots: 16
+  num_views: 4
+  
+  lr: 5e-4
+  weight_decay: 0.05
+  epochs: 300
+  last_epochs: 0
+  start_epoch: 0
+  warmup_epochs: 0
+  val_epoch: 100
+  scheduler: CosLR
+  amp: False
+
+  manual_seed: 1463
+  print_freq: 40
+  save_freq: 1
+  save_path: checkpoint_test/test
+  pretrained: 
+  weight: # path to initial weight (default: none)
+  resume: # checkpoint_resnet_fewshot/experiment_resnet18_fewshot_4_view_transformer_32token_conv_fusion_GELU_linear_no_aug_bz32/model/model_best.pth
+  evaluate: True  # evaluate on validation set, extra gpu memory needed and small batch_size_val is recommend
+  eval_freq: 5
+
+Distributed:
+  dist_url: tcp://127.0.0.1:3677
+  dist_backend: 'nccl'
+  multiprocessing_distributed: True
+  world_size: 1
+  rank: 0
+
+
+TEST:
+  test_workers: 4
+  test_gpu: [7]
+  test_batch_size: 16
+  model_path: checkpoint_shapenet_resnet_atten_fusion_conv_fusion/experiment_resnet18_fewshot_4_view_8_shot_transformer_32token_conv_fusion_GELU_linear/model/model_best.pth
+  save_folder:

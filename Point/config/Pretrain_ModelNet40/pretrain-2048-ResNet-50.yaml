@@ -1,0 +1,75 @@
+DATA:
+  data_name: modelnet
+  data_root: ./data/ModelNet40
+  classes: 40
+  npoints: 2048
+  use_normals: False
+
+BaseModel:
+  base_model_variant: resnet_50_torchvision
+  head_type: pooling_mlp  # linear  pooling_mlp
+  num_features: 1024
+  view_feature: 2048
+  obj_size: 224
+  img_size: 224
+  sub_img_size: 244
+  checkpoint_path:
+
+Enc:
+  atten_fusion: True
+  local_size: 32
+  trans_dim: 8
+  graph_dim: 64
+  imgblock_dim: 64
+  imagenet_default_mean: [0.485, 0.456, 0.406]
+  imagenet_default_std: [0.229, 0.224, 0.225]
+
+Head:
+  head_drop_rate: 0.1
+  num_patches: 7
+
+TRAIN:
+  update_type: bn
+  label_smoothing: True
+
+  train_gpu: [1]
+  workers: 8
+  batch_size: 16
+  batch_size_val: 16
+  num_shots: 16
+  num_views: 4
+  
+  lr: 1e-4
+  weight_decay: 0.05
+  epochs: 300
+  val_epoch: 200
+  last_epochs: 30
+  start_epoch: 0
+  warmup_epochs: 10
+  scheduler: CosLR
+  amp: False
+
+  manual_seed: 1463
+  print_freq: 40
+  save_freq: 5
+  save_path: checkpoints/Pretrain_ModelNet40_2048_ResNet-50
+  pretrained: 
+  weight:  # path to initial weight (default: none)
+  resume: # checkpoint_resnet_fewshot/experiment_resnet50_fewshot_4_view_transformer_32token_fusion_linear_no_aug_5e-4/model/model_last.pth
+  evaluate: True  # evaluate on validation set, extra gpu memory needed and small batch_size_val is recommend
+  eval_freq: 5
+
+Distributed:
+  dist_url: tcp://127.0.0.1:3879
+  dist_backend: 'nccl'
+  multiprocessing_distributed: True
+  world_size: 1
+  rank: 0
+
+
+TEST:
+  test_workers: 1
+  test_gpu: [3]
+  test_batch_size: 16
+  model_path: checkpoint_modelnet40_resnet_atten_fusion_conv_fusion/experiment_resnet50_fewshot_4_view_2_shot_transformer_32token_conv_fusion_GELU_linear/model/model_best.pth
+  save_folder:

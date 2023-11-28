@@ -1,0 +1,75 @@
+DATA:
+  data_name: scanobjectnn_hardest
+  data_root: ./data/ScanObjectNN/main_split
+  classes: 15
+  npoints: 2048
+  use_normals: False
+
+BaseModel:
+  base_model_variant: resnet_101_torchvision
+  head_type: pooling_mlp  # linear  pooling_mlp(PoolingClsHead no adaptor)  token_cls_head token_cls_head_v2
+  num_features: 1024
+  view_feature: 2048
+  obj_size: 192
+  img_size: 224
+  sub_img_size: 244
+  checkpoint_path:
+
+Enc:
+  atten_fusion: True
+  local_size: 32
+  kernel_size: 7
+  trans_dim: 8
+  graph_dim: 64
+  imgblock_dim: 64
+  imagenet_default_mean: [0.485, 0.456, 0.406]
+  imagenet_default_std: [0.229, 0.224, 0.225]
+
+Head:
+  head_drop_rate: 0.1
+  num_patches: 7
+
+TRAIN:
+  update_type: bn
+  label_smoothing: True
+
+  train_gpu: [2]
+  workers: 4
+  batch_size: 16
+  batch_size_val: 16
+  num_shots: 16
+  num_views: 4
+  
+  lr: 1e-4
+  weight_decay: 0.05
+  epochs: 300
+  last_epochs: 20
+  start_epoch: 0
+  warmup_epochs: 0
+  scheduler: CosLR
+  amp: False
+
+  manual_seed: 1463
+  print_freq: 40
+  save_freq: 1
+  save_path:
+  pretrained: 
+  weight:  # path to initial weight (default: none)
+  resume: 
+  evaluate: True  # evaluate on validation set, extra gpu memory needed and small batch_size_val is recommend
+  eval_freq: 5
+
+Distributed:
+  dist_url: tcp://127.0.0.1:3835
+  dist_backend: 'nccl'
+  multiprocessing_distributed: True
+  world_size: 1
+  rank: 0
+
+
+TEST:
+  test_workers: 4
+  test_gpu: [0]
+  test_batch_size: 64
+  model_path: checkpoint_scanobjectnn_resnet_fewshot_baseline/experiment_resnet101_fewshot_baseline/model/model_best.pth
+  save_folder:

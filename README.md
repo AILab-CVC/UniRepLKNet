@@ -13,20 +13,20 @@
     <a href="https://invictus717.github.io/" target="_blank">Yiyuan Zhang</a><sup>2*</sup>,</span>
     <span class="author-block">
     </span>
-    <a href="https://geyixiao.com/" target="_blank">Yixiao Ge</a><sup>2</sup>,
+    <a href="https://geyixiao.com/" target="_blank">Yixiao Ge</a><sup>1</sup>,
     </span>
     </br>
     <span class="author-block">
-    <a target="_blank">Sijie Zhao</a><sup>2</sup>,
+    <a target="_blank">Sijie Zhao</a><sup>1</sup>,
     </span>
     <span class="author-block">
-    <a href="https://scholar.google.com/citations?user=6Ra2TgQAAAAJ&hl=en&oi=ao" target="_blank">Lin Song</a><sup>2</sup>,
+    <a href="https://scholar.google.com/citations?user=6Ra2TgQAAAAJ&hl=en&oi=ao" target="_blank">Lin Song</a><sup>1</sup>,
     </span>
     <span class="author-block">
-    <a href="http://people.eecs.berkeley.edu/~xyyue/" target="_blank">Xiangyu Yue</a><sup>1</sup>
+    <a href="http://people.eecs.berkeley.edu/~xyyue/" target="_blank">Xiangyu Yue</a><sup>2</sup>,
     </span>
     <span class="author-block">
-    <a href="https://scholar.google.com/citations?user=4oXBp9UAAAAJ&hl=en&oi=ao" target="_blank">Ying Shan</a><sup>2</sup>,
+    <a href="https://scholar.google.com/citations?user=4oXBp9UAAAAJ&hl=en&oi=ao" target="_blank">Ying Shan</a><sup>1</sup>
     </span>
 
 </div>
@@ -39,8 +39,11 @@
     <sup>*</sup> Equal Contribution&emsp;
 </div>
 
+[![arXiv](https://img.shields.io/badge/arxiv-2311.15599-b31b1b?style=plastic&color=b31b1b&link=https%3A%2F%2Farxiv.org%2Fabs%2F2311.15599)](https://arxiv.org/abs/2311.15599)
+[![Hugging Face Models](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-blue)](https://huggingface.co/DingXiaoH/UniRepLKNet/tree/main)
+
 ## Motivation 
-* We note that most architectures of the existing large-kernel ConvNets simply follow other models. **The architectural design for largekernel ConvNets remains under-explored.**
+* We note that most architectures of the existing large-kernel ConvNets simply follow other models. **The architectural design for large-kernel ConvNets remains under-explored.**
 * The *universal perception ability* of Transformers is sparking in multimodal research areas (image, audio, video, time-series, *etc*). We are curious whether ConvNets can also deliver **universal perception ability across multiple modalities with a unified architecture**.
 
 ## Highlights
@@ -75,17 +78,17 @@ and broad utility across different modalities and tasks.**
 
 - [x] Model code
 - [x] Most of the ImageNet-1K and ImageNet-22K pretrained weights
-- [x] Weights released on both Google Drive (see this page) and **hugging face** (see unireplknet.py)
+- [x] Weights released on both Google Drive (see this page) and hugging face (see unireplknet.py)
 - [x] PyTorch efficient large-kernel conv implementation
 - [x] ImageNet training code
-- [ ] Code, models, and documents of audio, video, point cloud, and time-series tasks (will be released in one day)
+- [x] Code, models, and documents of audio, video, point cloud, and time-series tasks (will be released in one day)
 - [ ] Better documentation
 - [ ] Object detection and semantic segmentation code and models (will be released in one day)
 
+
 **Star and watch me if you are interested in this project :)**
 
-**There may be some bugs. Please raise an issue if you get one. I will test the code thoroughly in the next several days.**
-
+**There may be some bugs. Please raise an issue if you get one. The code will be thoroughly tested in the next several days.**
 
 ## Models
 
@@ -165,33 +168,16 @@ python -m torch.distributed.launch --nproc_per_node=8 main.py \
 --input_size 384 --drop_path 0.2 \
 --data_path /path/to/imagenet-1k
 ```
-For training or finetuning UniRepLKNets on ImageNet-1K or 22K, see [THIS DOC](imagenet.md)
+For training or finetuning UniRepLKNets on ImageNet-1K or 22K, see [THIS DOC](/Image/README.md)
 
 ## Universal perception on audio, video, point cloud, and time-series tasks
 
-Code, models, and documents of audio, video, point cloud, and time-series tasks will be released in one day.
+For detailed documetation, please refer to these documents as follows:
 
-[//]: # (## Start Up)
-
-[//]: # ()
-[//]: # (*Please refer to relevant documents*)
-
-[//]: # ()
-[//]: # (| Modality | Document |)
-
-[//]: # (|:---:|:---:|)
-
-[//]: # (Image | [Doc]&#40;./Image/README.md&#41;)
-
-[//]: # (Video | [Doc]&#40;./Video/README.md&#41;)
-
-[//]: # (Point Cloud | [Doc]&#40;./Point/README.md&#41;)
-
-[//]: # (Audio | [Doc]&#40;./Audio/README.md&#41;)
-
-[//]: # (Time-Series | [Doc]&#40;./Time-Series/README.md&#41;)
-
-
+* Audio for [Audio DOC](/Audio/README.md)
+* Point Cloud [Point Cloud DOC](/Point/README.md)
+* Time-Series [Time-Series DOC](/Time-Series/README.md)
+* Video [Video DOC](/Video/README.md)
 
 ## Use an efficient large-kernel convolution with PyTorch
 
