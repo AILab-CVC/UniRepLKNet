@@ -21,7 +21,8 @@ except:
     hf_hub_download = None      # install huggingface_hub if you would like to download models conveniently from huggingface
 
 #   =============== for the ease of directly using this file in MMSegmentation and MMDetection.
-#   =============== ignore these lines if you do not plan to do so
+#   =============== ignore the following two segments of code if you do not plan to do so
+#   =============== delete one of the following two segments if you get a confliction
 try:
     from mmseg.models.builder import BACKBONES as seg_BACKBONES
     from mmseg.utils import get_root_logger
@@ -424,6 +425,7 @@ class UniRepLKNet(nn.Module):
                  ):
         super().__init__()
 
+        depths = tuple(depths)
         if kernel_sizes is None:
             if depths in default_depths_to_kernel_sizes:
                 print('=========== use default kernel size ')

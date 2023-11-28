@@ -18,7 +18,10 @@ from timm.utils import get_state_dict
 from pathlib import Path
 import torch
 import torch.distributed as dist
-from torch._six import inf
+try:
+    from torch._six import inf
+except ImportError:
+    from torch import inf
 from tensorboardX import SummaryWriter
 
 class SmoothedValue(object):
@@ -488,7 +491,9 @@ def auto_load_model(args, model, model_without_ddp, optimizer, loss_scaler, mode
                 args.resume, map_location='cpu', check_hash=True)
         else:
             checkpoint = torch.load(args.resume, map_location='cpu')
-        model_without_ddp.load_state_dict(checkpoint['model'])
+        if 'model' in checkpoint:
+            checkpoint = checkpoint['model']
+        model_without_ddp.load_state_dict(checkpoint)
         print("Resume checkpoint %s" % args.resume)
         if 'optimizer' in checkpoint and 'epoch' in checkpoint:
             optimizer.load_state_dict(checkpoint['optimizer'])
