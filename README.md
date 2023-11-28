@@ -142,6 +142,26 @@ Code, weights and configs will be released in one day.
 | UniRepLKNet-L_22K | 640x640 | 54.5/55.0 | 254M  | 2507G | TBA |
 | UniRepLKNet-XL_22K | 640x640 | 55.2/55.6 | 425M  | 3420G | TBA |
 
+## ImageNet evaluation and training
+
+We give an example evaluation command 
+
+Single-GPU
+```
+python main.py --model unireplknet_b --eval true \
+--resume unireplknet_b_in22k_to_in1k_384_acc87.40.pth  \
+--input_size 384 --drop_path 0.2 \
+--data_path /path/to/imagenet-1k
+```
+Multi-GPU
+```
+python -m torch.distributed.launch --nproc_per_node=8 main.py \
+--model unireplknet_b --eval true \
+--resume unireplknet_b_in22k_to_in1k_384_acc87.40.pth  \
+--input_size 384 --drop_path 0.2 \
+--data_path /path/to/imagenet-1k
+```
+
 ## Universal perception on audio, video, point cloud, and time-series tasks
 
 Code, models, and documents of audio, video, point cloud, and time-series tasks will be released in one day.
