@@ -75,14 +75,14 @@ and broad utility across different modalities and tasks.**
 
 - [x] Model code
 - [x] Most of the ImageNet-1K and ImageNet-22K pretrained weights
-- [x] Weights released on both Google Drive (see this page) and hugging face (see unireplknet.py)
+- [x] Weights released on both Google Drive (see this page) and **hugging face** (see unireplknet.py)
 - [x] PyTorch efficient large-kernel conv implementation
 - [x] ImageNet training code
 - [ ] Code, models, and documents of audio, video, point cloud, and time-series tasks (will be released in one day)
 - [ ] Better documentation
 - [ ] Object detection and semantic segmentation code and models (will be released in one day)
 
-**Start and watch me if you are interested in this project :)**
+**Star and watch me if you are interested in this project :)**
 
 **There may be some bugs. Please raise an issue if you get one. I will test the code thoroughly in the next several days.**
 
