@@ -82,6 +82,10 @@ and broad utility across different modalities and tasks.**
 - [ ] Better documentation
 - [ ] Object detection and semantic segmentation code and models (will be released in one day)
 
+**Start and watch me if you are interested in this project :)**
+
+**There may be some bugs. Please raise an issue if you get one. I will test the code thoroughly in the next several days.**
+
 
 ## Models
 
