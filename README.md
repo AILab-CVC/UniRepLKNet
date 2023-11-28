@@ -85,8 +85,6 @@ and broad utility across different modalities and tasks.**
 
 ## Models
 
-For training or finetuning UniRepLKNets on ImageNet-1K or 22K, see [THIS DOC](imagenet.md)
-
 ### ImageNet-1K Pretrained Weights
 
 | name | resolution |acc@1 | #params | FLOPs | Weights |
@@ -144,7 +142,7 @@ Code, weights and configs will be released in one day.
 
 ## ImageNet evaluation and training
 
-We give an example evaluation command 
+We give an example evaluation command.
 
 Single-GPU
 ```
@@ -161,6 +159,7 @@ python -m torch.distributed.launch --nproc_per_node=8 main.py \
 --input_size 384 --drop_path 0.2 \
 --data_path /path/to/imagenet-1k
 ```
+For training or finetuning UniRepLKNets on ImageNet-1K or 22K, see [THIS DOC](imagenet.md)
 
 ## Universal perception on audio, video, point cloud, and time-series tasks
 
