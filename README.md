@@ -89,6 +89,8 @@ and broad utility across different modalities and tasks.**
 
 ## Models
 
+We have uploaded the weights to Google Drive. You may alternatively download via hugging face (see [HERE](https://github.com/AILab-CVC/UniRepLKNet/blob/main/unireplknet.py#L702)).
+
 ### ImageNet-1K Pretrained Weights
 
 | name | resolution |acc@1 | #params | FLOPs | Weights |
