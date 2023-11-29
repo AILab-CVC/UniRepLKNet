@@ -172,7 +172,7 @@ For training or finetuning UniRepLKNets on ImageNet-1K or 22K, see [THIS DOC](/I
 
 ## Universal perception on audio, video, point cloud, and time-series tasks
 
-For detailed documetation, please refer to these documents as follows:
+For detailed documentation, please refer to these documents as follows:
 
 * Audio for [Audio DOC](/Audio/README.md)
 * Point Cloud [Point Cloud DOC](/Point/README.md)
