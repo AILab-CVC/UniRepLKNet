@@ -41,6 +41,12 @@
 
 [![arXiv](https://img.shields.io/badge/arxiv-2311.15599-b31b1b?style=plastic&color=b31b1b&link=https%3A%2F%2Farxiv.org%2Fabs%2F2311.15599)](https://arxiv.org/abs/2311.15599)
 [![Hugging Face Models](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-blue)](https://huggingface.co/DingXiaoH/UniRepLKNet/tree/main)
+<a href="/data">
+  <img alt="Project Website" src="https://img.shields.io/badge/Project-Website-blueviolet"/>
+</a>
+<a href="#license--citation">
+  <img alt="License: Apache2.0" src="https://img.shields.io/badge/license-Apache%202.0-blue.svg"/>
+</a>
 
 ## Motivation 
 * We note that most architectures of the existing large-kernel ConvNets simply follow other models. **The architectural design for large-kernel ConvNets remains under-explored.**
@@ -68,11 +74,7 @@ model achieves state-of-the-art performance on time-series
 forecasting and audio recognition tasks even without
 modality-specific customization to the architecture.
 
-**Such results not
-only signify a “comeback” for ConvNet in its original domain
-but also showcase large-kernel ConvNet’s potential to
-“conquer” new territories, highlighting their adaptability
-and broad utility across different modalities and tasks.**
+**UniRepLKNet not only signifies a "comeback" for ConvNet in its original domain but also showcases large-kernel ConvNet’s potential to "conquer" new territories, highlighting further adaptability and broad utility across different modalities and tasks.**
 
 ## TODOs
 
@@ -199,5 +201,17 @@ It is reported (see [here](https://github.com/DingXiaoH/RepLKNet-pytorch/issues/
 
 Pull requests (e.g., better or other implementations or implementations on other frameworks) are welcomed.
 
+## Citation
+
+If the code and paper help your research, please kindly cite:
+
+```
+@article{ding2023unireplknet,
+  title={UniRepLKNet: A Universal Perception Large-Kernel ConvNet for Audio, Video, Point Cloud, Time-Series and Image Recognition},
+  author={Ding, Xiaohan and Zhang, Yiyuan and Ge, Yixiao and Zhao, Sijie and Song, Lin and Yue, Xiangyu and Shan, Ying},
+  journal={arXiv preprint arXiv:2311.15599},
+  year={2023}
+}
+```
 ## License
 This project is released under the Apache 2.0 license. Please see the [LICENSE](LICENSE) file for more information.
