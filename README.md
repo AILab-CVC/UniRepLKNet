@@ -41,11 +41,9 @@
 
 [![arXiv](https://img.shields.io/badge/arxiv-2311.15599-b31b1b?style=plastic&color=b31b1b&link=https%3A%2F%2Farxiv.org%2Fabs%2F2311.15599)](https://arxiv.org/abs/2311.15599)
 [![Hugging Face Models](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-blue)](https://huggingface.co/DingXiaoH/UniRepLKNet/tree/main)
-<a href="/data">
-  <img alt="Project Website" src="https://img.shields.io/badge/Project-Website-blueviolet"/>
-</a>
-<a href="#license--citation">
-  <img alt="License: Apache2.0" src="https://img.shields.io/badge/license-Apache%202.0-blue.svg"/>
+[![website](https://img.shields.io/badge/Project-Website-blueviolet)](https://invictus717.github.io/UniRepLKNet/)
+<a href="#LICENSE--citation">
+  <img alt="License: Apache2.0" src="https://img.shields.io/badge/LICENSE-Apache%202.0-blue.svg"/>
 </a>
 
 ## Motivation 
