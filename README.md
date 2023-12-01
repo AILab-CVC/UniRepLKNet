@@ -81,9 +81,11 @@ modality-specific customization to the architecture.
 - [x] Weights released on both Google Drive (see this page) and hugging face (see unireplknet.py)
 - [x] PyTorch efficient large-kernel conv implementation
 - [x] ImageNet training code
-- [x] Code, models, and documents of audio, video, point cloud, and time-series tasks (will be released in one day)
+- [x] Code and documents of audio, video, point cloud, and time-series tasks
+- [x] Semantic segmentation code, document, and some checkpoints
 - [ ] Better documentation
-- [ ] Object detection and semantic segmentation code and models (will be released in one day)
+- [ ] All the object detection and semantic segmentation models
+- [ ] Checkpoints of audio, video, point cloud, and time-series tasks
 
 
 **Star and watch me if you are interested in this project :)**
@@ -109,7 +111,7 @@ We have uploaded the weights to Google Drive. You may alternatively download via
 
 | name | resolution | #params | FLOPs | ckpt |
 |:---:|:---:|:---:|:---:| :---:|
-| UniRepLKNet-S | 224x224 | 56M | 26.7G  | TBA |
+| UniRepLKNet-S | 224x224 | 56M | 26.7G  | (lost. reproducing) |
 | UniRepLKNet-B | 224x224 | 98M   | 47.2G   | [ckpt](https://drive.google.com/file/d/1t1txZOTpwXGUMVsqyUxpzE5EGLqMX5li/view?usp=drive_link)|
 | UniRepLKNet-L | 192x192 | 218M  | 105.4G   | [ckpt](https://drive.google.com/file/d/1PEY474n6a7pZ3vJitsU7ZLzwBI00pf7u/view?usp=drive_link)|
 | UniRepLKNet-XL | 192x192 | 386M  | 187G  | [ckpt](https://drive.google.com/file/d/1OP7I0jabljm8LKXTypk4HDmF9dQQqYib/view?usp=drive_link)|
@@ -121,7 +123,7 @@ We have uploaded the weights to Google Drive. You may alternatively download via
 | UniRepLKNet-S | 384x384 | 86.4 | 56M | 26.7G  | [ckpt](https://drive.google.com/file/d/1PzEHFOgEllMRIB-emkX_2VjXyBYC_X0z/view?usp=drive_link)|
 | UniRepLKNet-B | 384x384 | 87.4 | 98M   | 47.2G   | [ckpt](https://drive.google.com/file/d/1T4BB3xx6FsWrK5QpTy7FwBrLuOMcZcEu/view?usp=drive_link)|
 | UniRepLKNet-L | 384x384 | 87.9 | 218M  | 105.4G   | [ckpt](https://drive.google.com/file/d/10jJGzXX3cFRrfk3oAoIoWRnKSAaquQtM/view?usp=drive_link)|
-| UniRepLKNet-XL | 384x384 | 88.0 | 386M  | 187G  | TBA|
+| UniRepLKNet-XL | 384x384 | 88.0 | 386M  | 187G  | (lost. reproducing)|
 
 ### COCO Object Detection
 
