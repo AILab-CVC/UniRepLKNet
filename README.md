@@ -87,6 +87,7 @@ modality-specific customization to the architecture.
 - [ ] All the object detection and semantic segmentation models
 - [ ] Checkpoints of audio, video, point cloud, and time-series tasks
 
+Latest news: fixed a bug, which results from [this commit](https://github.com/AILab-CVC/UniRepLKNet/commit/920b7251ea3d52ab476d0f40ba722db56d9a7e03) on Dec 1st, 2023. [Now it is fixed ](https://github.com/AILab-CVC/UniRepLKNet/commit/5349bcee9a8202c62c8c169220f8cc613914baac). If you used unireplknet.py after Dec 1st, 2023, please check your code.
 
 **Star and watch me if you are interested in this project :)**
 
