@@ -270,7 +270,6 @@ class UniRepLKNetBlock(nn.Module):
 
         if kernel_size == 0:
             self.dwconv = nn.Identity()
-            self.norm = nn.Identity()
         elif kernel_size >= 7:
             self.dwconv = DilatedReparamBlock(dim, kernel_size, deploy=deploy,
                                               use_sync_bn=use_sync_bn,
@@ -279,7 +278,7 @@ class UniRepLKNetBlock(nn.Module):
         else:
             assert kernel_size in [3, 5]
             self.dwconv = get_conv2d(dim, dim, kernel_size=kernel_size, stride=1, padding=kernel_size // 2,
-                                     dilation=1, groups=dim, bias=True,
+                                     dilation=1, groups=dim, bias=deploy,
                                      attempt_use_lk_impl=attempt_use_lk_impl)
 
         if deploy or kernel_size == 0:
