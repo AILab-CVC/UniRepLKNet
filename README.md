@@ -160,7 +160,7 @@ Single-GPU
 ```
 python main.py --model unireplknet_b --eval true \
 --resume unireplknet_b_in22k_to_in1k_384_acc87.40.pth  \
---input_size 384 --drop_path 0.2 \
+--input_size 384 \
 --data_path /path/to/imagenet-1k
 ```
 Multi-GPU
@@ -168,7 +168,7 @@ Multi-GPU
 python -m torch.distributed.launch --nproc_per_node=8 main.py \
 --model unireplknet_b --eval true \
 --resume unireplknet_b_in22k_to_in1k_384_acc87.40.pth  \
---input_size 384 --drop_path 0.2 \
+--input_size 384 \
 --data_path /path/to/imagenet-1k
 ```
 For training or finetuning UniRepLKNets on ImageNet-1K or 22K, see [THIS DOC](/Image/README.md)
