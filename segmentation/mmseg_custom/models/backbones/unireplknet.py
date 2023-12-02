@@ -266,8 +266,6 @@ class UniRepLKNetBlock(nn.Module):
         if self.with_cp:
             print('****** note with_cp = True, reduce memory consumption but may slow down training ******')
 
-        self.need_contiguous = (not deploy) or kernel_size >= 7
-
         if kernel_size == 0:
             self.dwconv = nn.Identity()
         elif kernel_size >= 7:
@@ -310,21 +308,23 @@ class UniRepLKNetBlock(nn.Module):
                                                          and layer_scale_init_value > 0 else None
         self.drop_path = DropPath(drop_path) if drop_path > 0. else nn.Identity()
 
+    def compute_residual(self, x):
+        y = self.se(self.norm(self.dwconv(x)))
+        y = self.pwconv2(self.act(self.pwconv1(y)))
+        if self.gamma is not None:
+            y = self.gamma.view(1, -1, 1, 1) * y
+        return self.drop_path(y)
+
     def forward(self, inputs):
 
         def _f(x):
-            if self.need_contiguous:
-                x = x.contiguous()
-            y = self.se(self.norm(self.dwconv(x)))
-            y = self.pwconv2(self.act(self.pwconv1(y)))
-            if self.gamma is not None:
-                y = self.gamma.view(1, -1, 1, 1) * y
-            return self.drop_path(y) + x
+            return x + self.compute_residual(x)
 
         if self.with_cp and inputs.requires_grad:
-            return checkpoint.checkpoint(_f, inputs)
+            out = checkpoint.checkpoint(_f, inputs)
         else:
-            return _f(inputs)
+            out = _f(inputs)
+        return out
 
     def reparameterize(self):
         if hasattr(self.dwconv, 'merge_dilated_branches'):
