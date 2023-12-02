@@ -129,6 +129,8 @@ Then test the converted model. Note we use ```model.backbone.deploy=True``` to o
 python3 test.py configs/ade20k/upernet_unireplknet_t_512_160k_ade20k.py upernet_unireplknet_t_512_160k_ade20k_miou48.56_deploy.pth --cfg-options model.backbone.deploy=True, model.backbone.init_cfg.checkpoint=None --eval mIoU
 ```
 
+You will get identical results to the trained model.
+
 ### Export
 
 To export a segmentation model from PyTorch to TensorRT, for example, run:
