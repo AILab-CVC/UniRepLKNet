@@ -95,7 +95,25 @@ Latest news: fixed a bug, which results from [this commit](https://github.com/AI
 
 ## Models
 
-We have uploaded the weights to Google Drive. You may alternatively download via hugging face (see [HERE](https://github.com/AILab-CVC/UniRepLKNet/blob/main/unireplknet.py#L675)).
+We have provided five ways to download our checkpoints.
+
+1. Download via the Google Drive links shown below.
+2. Visit our huggingface repo at https://huggingface.co/DingXiaoH/UniRepLKNet/tree/main and click the download icons.
+3. Use huggingface-hub in your python code. First, install huggingface_hub
+```
+pip install huggingface_hub
+```
+In your python code, for example
+```
+        from huggingface_hub import hf_hub_download
+        repo_id = 'DingXiaoH/UniRepLKNet'
+        cache_file = hf_hub_download(repo_id=repo_id, filename=FILE_NAME)
+        checkpoint = torch.load(cache_file, map_location='cpu')
+        model.load_state_dict(checkpoint)
+```
+See our [huggingface repo](https://huggingface.co/DingXiaoH/UniRepLKNet/tree/main) or [our code](unireplknet.py#L670) for FILE_NAME (e.g., ```unireplknet_xl_in22k_pretrain.pth```).
+4. Use the huggingface CLI. Check the [tutorial](https://huggingface.co/docs/huggingface_hub/guides/download#download-from-the-cli).
+5. Automatically download our checkpoints by passing ```in_1k_pretrained=True```, ```in_22k_pretrained=True```, or ```in_22k_to_1k=False``` while calling our provided functions. See the [code here](unireplknet.py#L738).
 
 ### ImageNet-1K Pretrained Weights
 
