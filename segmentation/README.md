@@ -58,28 +58,30 @@ Prepare datasets according to the [guidelines](https://github.com/open-mmlab/mms
 
 ### Evaluation
 
-To evaluate our `UniRepLKNet` on ADE20K val, run:
+You can download checkpoint files from our Google Drive or Hugging Face repo.
 
+To evaluate on the ADE20K val set, run
 ```bash
-sh dist_test.sh <config-file> <checkpoint> <gpu-num> --eval mIoU
+sh dist_test.sh <config-file> <checkpoint> <gpu-num> --eval mIoU --cfg-options model.backbone.init_cfg.checkpoint=None
 ```
-You can download checkpoint files from our Google Drive or Hugging Face repo. Then place it to segmentation/checkpoint_dir/seg.
+Note that we use ```--cfg-options model.backbone.init_cfg.checkpoint=None``` to overwrite the initialization config of the backbone so that its initialization with the ImageNet-pretrained weights will be skipped. This is because we will load its weights together with the UperNet heads from the checkpoint file.
 
-For example, to evaluate the `UniRepLKNet-T` with a single GPU:
-
-```bash
-python test.py configs/ade20k/upernet_unireplknet_t_512_160k_ade20k.py checkpoint_dir/seg/upernet_unireplknet_t_512_160k_ade20k_miou48.56.pth --eval mIoU
-```
+You may also 1) change ```checkpoint``` to ```None``` in the config file to realize the same effect or 2) simply ignore it if you have downloaded the ImageNet-pretrained weights (initializing the backbone twice does no harm except for wasting time).
 
 For example, to evaluate the `UniRepLKNet-B` with a single node with 8 GPUs:
-
 ```bash
-sh dist_test.sh configs/ade20k/upernet_unireplknet_b_in22k_640_160k_ade20k.py checkpoint_dir/seg/upernet_unireplknet_b_in22k_640_160k_ade20k_miou53.52.pth 8 --eval mIoU
+sh dist_test.sh configs/ade20k/upernet_unireplknet_b_in22k_640_160k_ade20k.py upernet_unireplknet_b_in22k_640_160k_ade20k_miou53.52.pth 8 --eval mIoU  --cfg-options model.backbone.init_cfg.checkpoint=None
 ```
+
+For example, to evaluate the `UniRepLKNet-T` with a single GPU:
+```bash
+python test.py configs/ade20k/upernet_unireplknet_t_512_160k_ade20k.py upernet_unireplknet_t_512_160k_ade20k_miou48.56.pth --eval mIoU --cfg-options model.backbone.init_cfg.checkpoint=None
+```
+
 
 ### Training
 
-To train a `UniRepLKNet` on ADE20K, run:
+To train a `UniRepLKNet` on ADE20K, 1) ensure that the ```init_cfg.checkpoint``` in the config file refers to the downloaded pretrained weights, and 2) run
 
 ```bash
 sh dist_train.sh <config-file> <gpu-num>
@@ -90,6 +92,8 @@ For example, to train `UniRepLKNet-T` with 8 GPU on 1 node (total batch size 16)
 ```bash
 sh dist_train.sh configs/ade20k/upernet_unireplknet_t_512_160k_ade20k.py 8
 ```
+
+
 
 ### Manage Jobs with Slurm
 
@@ -106,21 +110,20 @@ If you specify image containing directory instead of a single image, it will pro
 CUDA_VISIBLE_DEVICES=0 python image_demo.py \
   data/ade/ADEChallengeData2016/images/validation/ADE_val_00000591.jpg \
   configs/ade20k/upernet_unireplknet_t_512_160k_ade20k.py  \
-  checkpoint_dir/seg/upernet_unireplknet_t_512_160k_ade20k_miou48.pth  \
+  upernet_unireplknet_t_512_160k_ade20k_miou48.56.pth  \
   --palette ade20k 
 ```
 
 ### Re-parameterize Trained Model into the Inference-time Structure
 
-Equivalently remove the following structures to convert the trained model into the inference structure for deployment: parallel branches in Dilated Reparam Block, BatchNorms, and the bias term in GRN.
+Before deployment, we may equivalently remove the following structures to convert the trained model into the inference structure for deployment: parallel branches in Dilated Reparam Block, BatchNorms, and the bias term in GRN.
 
 The following command calls ```UniRepLKNet.reparameterize_unireplknet()``` and the resultant weights will be saved to ```upernet_unireplknet_t_512_160k_ade20k_miou48.56_deploy.pth```.
-
-Note that we use ```model.backbone.init_cfg.checkpoint=None``` to overwrite the initialization config of the backbone because we will load the trained segmentation model ```upernet_unireplknet_t_512_160k_ade20k_miou48.56.pth```. 
 
 ```
 python3 reparameterize.py configs/ade20k/upernet_unireplknet_t_512_160k_ade20k.py upernet_unireplknet_t_512_160k_ade20k_miou48.56.pth upernet_unireplknet_t_512_160k_ade20k_miou48.56_deploy.pth --cfg-options model.backbone.init_cfg.checkpoint=None
 ```
+
 Then test the converted model. Note we use ```model.backbone.deploy=True``` to overwrite the original configuration in the config file so that the model will be constructed in the inference form (i.e., without the parallel branches, BatchNorms, and bias in GRN).
 ```
 python3 test.py configs/ade20k/upernet_unireplknet_t_512_160k_ade20k.py upernet_unireplknet_t_512_160k_ade20k_miou48.56_deploy.pth --cfg-options model.backbone.deploy=True, model.backbone.init_cfg.checkpoint=None --eval mIoU

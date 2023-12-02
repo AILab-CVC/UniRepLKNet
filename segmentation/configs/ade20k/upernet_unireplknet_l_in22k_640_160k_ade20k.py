@@ -19,7 +19,7 @@ model = dict(
         kernel_sizes=None,  # use default kernel size
         with_cp=True,       # to save GPU memory
         attempt_use_lk_impl = False,    # the batch size is very small during training. the iGEMM implementation may be slow
-        init_cfg=dict(type='Pretrained', checkpoint='/apdcephfs/share_1290939/share_space/unireplknet_weights/UniRepLKNet/unireplknet_b_in22k_to_in1k_384_acc87.40.pth')
+        init_cfg=dict(type='Pretrained', checkpoint='unireplknet_l_in22k_to_in1k_384_acc87.88.pth')
     ),
     decode_head=dict(num_classes=150, in_channels=dims),
     auxiliary_head=dict(num_classes=150, in_channels=dims[2]),
