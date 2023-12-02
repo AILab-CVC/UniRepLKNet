@@ -147,7 +147,8 @@ Code, weights and configs will be released in one day.
 |:---:|:---:|:---:|:---:| :---:|:---:|
 | UniRepLKNet-T | 512x512 | 48.6/49.1 | 61M | 946G  | TBA |
 | UniRepLKNet-S | 512x512 | 50.5/51.0 | 86M  | 1036G | TBA |
-| UniRepLKNet-S_22K | 640x640 | 51.9/52.7 | 86M  | 1036G | TBA |
+| UniRepLKNet-S_22K | 512x512 | 51.9/52.7 | 86M  | 1036G | TBA |
+| UniRepLKNet-S_22K | 640x640 | TBA | 86M  | TBA | TBA |
 | UniRepLKNet-B_22K | 640x640 | 53.5/53.9 | 130M  | 1850G | TBA |
 | UniRepLKNet-L_22K | 640x640 | 54.5/55.0 | 254M  | 2507G | TBA |
 | UniRepLKNet-XL_22K | 640x640 | 55.2/55.6 | 425M  | 3420G | TBA |
