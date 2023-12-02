@@ -15,7 +15,7 @@ model = dict(
         type='UniRepLKNetBackbone',
         depths=[3, 3, 27, 3],
         dims=dims,
-        drop_path_rate=0.3,
+        drop_path_rate=0.4,
         kernel_sizes=None,  # use default kernel size
         with_cp=True,       # to save GPU memory
         attempt_use_lk_impl = False,    # the batch size is very small during training. the iGEMM implementation may be slow
@@ -60,9 +60,9 @@ test_pipeline = [
 
 optimizer=dict(constructor='UniRepLKNetLearningRateDecayOptimizerConstructor', _delete_=True, type='AdamW',
                    lr=0.0001, betas=(0.9, 0.999), weight_decay=0.05,
-                   paramwise_cfg={'decay_rate': 0.9,
+                   paramwise_cfg={'decay_rate': 0.85,
                                   'decay_type': 'layer_wise',
-                                  'num_layers': 9})
+                                  'num_layers': 12})
 
 
 lr_config = dict(_delete_=True, policy='poly',
