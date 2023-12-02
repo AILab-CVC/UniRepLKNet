@@ -87,6 +87,7 @@ modality-specific customization to the architecture.
 - [ ] All the object detection and semantic segmentation models
 - [ ] Checkpoints of audio, video, point cloud, and time-series tasks
 
+Latest news: fixed a bug, which results from [this commit](https://github.com/AILab-CVC/UniRepLKNet/commit/920b7251ea3d52ab476d0f40ba722db56d9a7e03) on Dec 1st, 2023. [Now it is fixed ](https://github.com/AILab-CVC/UniRepLKNet/commit/5349bcee9a8202c62c8c169220f8cc613914baac). If you used unireplknet.py after Dec 1st, 2023, please check your code.
 
 **Star and watch me if you are interested in this project :)**
 
@@ -159,7 +160,7 @@ Single-GPU
 ```
 python main.py --model unireplknet_b --eval true \
 --resume unireplknet_b_in22k_to_in1k_384_acc87.40.pth  \
---input_size 384 --drop_path 0.2 \
+--input_size 384 \
 --data_path /path/to/imagenet-1k
 ```
 Multi-GPU
@@ -167,7 +168,7 @@ Multi-GPU
 python -m torch.distributed.launch --nproc_per_node=8 main.py \
 --model unireplknet_b --eval true \
 --resume unireplknet_b_in22k_to_in1k_384_acc87.40.pth  \
---input_size 384 --drop_path 0.2 \
+--input_size 384 \
 --data_path /path/to/imagenet-1k
 ```
 For training or finetuning UniRepLKNets on ImageNet-1K or 22K, see [THIS DOC](/Image/README.md)
