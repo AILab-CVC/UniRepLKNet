@@ -93,6 +93,28 @@ Latest news: fixed a bug, which results from [this commit](https://github.com/AI
 
 **There may be some bugs. Please raise an issue if you get one. The code will be thoroughly tested in the next several days.**
 
+
+## Code design
+
+1. There is some MMDetection- and MMSegmentation-related code in ```unireplknet.py``` so that you can directly copy-paste it into your MMDetection or MMSegmentation, e.g., [here](unireplknet.py#L29) and [here](unireplknet.py#L617). If you do not want to use it with MMDetection or MMSegmentation, you can safely delete those lines of code.
+2. We provide a function ```reparameterize_unireplknet()``` that converts a trained UniRepLKNet into the inference structure, which equivalently removes the parallel branches in Dialted Reparam Blocks, Batch Norm layers, and the bias term in GRN. The pseudo-code of the full pipeline will be like
+```
+        training_model = unireplknet_l(...,  deploy=False)
+        train(training_model)
+        trained_results = evaluate(training_model)
+        training_model.reparameterize_unireplknet()
+        inference_results = evaluate(training_model)
+        # you will see inference_results are identical to trained_results
+        save(training_model, 'converted_weights.pth')
+        # use the converted model
+        deploy_model = unireplknet_l(..., deploy=True)
+        load_weights(deploy_model, 'converted_weights.pth')
+        deploy_results = evaluate(deploy_model)
+        # you will see deploy_results == inference_results == trained_results
+```
+3. You can also use timm.create_model to build the models and automatically initialize them with our pretrained weights. See the code [here](unireplknet.py#L726)
+
+
 ## Models
 
 We have provided five ways to download our checkpoints.
@@ -148,7 +170,14 @@ See our [huggingface repo](https://huggingface.co/DingXiaoH/UniRepLKNet/tree/mai
 
 ### COCO Object Detection
 
-Code, weights, and configs will be released in one day.
+Code and config files have been released. 
+
+Checkpoints have been already released on hugging face. Please see https://huggingface.co/DingXiaoH/UniRepLKNet/tree/main. You can download them right now.
+
+We are also uploading the checkpoints to Google Drive. The links below will be updated.
+
+Will update with a README in one day.
+
 
 | name | resolution |box mAP | mask mAP | #params | FLOPs | Weights |
 |:---:|:---:|:---:|:---:| :---:|:---:|:---:|
@@ -161,9 +190,11 @@ Code, weights, and configs will be released in one day.
 
 ### ADE-20K Semantic Segmentation
 
-Code and configs are released.
+Code, document, and config files have been released. See the [segmentation guide](segmentation/README.md) here.
 
-We are uploading checkpoints.
+Checkpoints have been already released on hugging face. Please see https://huggingface.co/DingXiaoH/UniRepLKNet/tree/main. You can download them right now.
+
+We are also uploading the checkpoints to Google Drive. The links below will be updated.
 
 | name | resolution |mIoU (ss/ms) | #params | FLOPs | Weights |
 |:---:|:---:|:---:|:---:| :---:|:---:|
@@ -198,7 +229,7 @@ For training or finetuning UniRepLKNets on ImageNet-1K or 22K, see [THIS DOC](/I
 
 ## Universal perception on audio, video, point cloud, and time-series tasks
 
-For detailed documetation, please refer to these documents as follows:
+For detailed documentation, please refer to these documents as follows:
 
 * Audio for [Audio DOC](/Audio/README.md)
 * Point Cloud [Point Cloud DOC](/Point/README.md)
