@@ -97,7 +97,8 @@ Latest news: fixed a bug, which results from [this commit](https://github.com/AI
 ## Code design
 
 1. There is some MMDetection- and MMSegmentation-related code in ```unireplknet.py``` so that you can directly copy-paste it into your MMDetection or MMSegmentation, e.g., [here](unireplknet.py#L29) and [here](unireplknet.py#L617). If you do not want to use it with MMDetection or MMSegmentation, you can safely delete those lines of code.
-2. We provide a function ```reparameterize_unireplknet()``` that converts a trained UniRepLKNet into the inference structure, which equivalently removes the parallel branches in Dialted Reparam Blocks, Batch Norm layers, and the bias term in GRN. The pseudo-code of the full pipeline will be like
+2. We have provided code to automatically build our models and load our released weights. See the functions [here](unireplknet.py#L726). You can also use ```timm.create_model``` to build the models. For example, ```model = timm.create_model('unireplknet_l', num_classes=num_classes_of_your_task, in_22k_pretrained=True)``` will call the function ```unireplknet_l``` defined [here](https://github.com/AILab-CVC/UniRepLKNet/blob/main/unireplknet.py#L745), which will build a UniRepLKNet-L and automatically download our checkpoints and load the weights.
+3. As UniRepLKNet also uses the Structural Re-parameterization methodology, we provide a function ```reparameterize_unireplknet()``` that converts a trained UniRepLKNet into the inference structure, which equivalently removes the parallel branches in Dialted Reparam Blocks, Batch Norm layers, and the bias term in GRN. The pseudo-code of the full pipeline will be like
 ```
         training_model = unireplknet_l(...,  deploy=False)
         train(training_model)
@@ -112,7 +113,8 @@ Latest news: fixed a bug, which results from [this commit](https://github.com/AI
         deploy_results = evaluate(deploy_model)
         # you will see deploy_results == inference_results == trained_results
 ```
-3. You can also use timm.create_model to build the models and automatically initialize them with our pretrained weights. See the code [here](unireplknet.py#L726)
+4. You may want to read this if you are familiar with the [timm](https://github.com/huggingface/pytorch-image-models/tree/main) library. We sincerely thank timm for providing a convenient [re-parameterize function](https://github.com/huggingface/pytorch-image-models/blob/main/timm/utils/model.py#L225). The code design of UniRepLKNet is compatible with it. That is, calling ```some_unireplknet_model.reparameterize_unireplknet()``` is equivalent to calling ```timm.utils.reparameterize_model(some_unireplknet_model)```. So if you use our code with timm's codebase, e.g., timm's evaluation code, just add ```--reparam``` to your command so that ```timm.utils.reparameterize_model``` will be called (see [here](https://github.com/huggingface/pytorch-image-models/blob/main/validate.py#L128)).
+
 
 
 ## Models
