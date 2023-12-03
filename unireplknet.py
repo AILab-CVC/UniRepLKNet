@@ -20,6 +20,8 @@ try:
 except:
     hf_hub_download = None      # install huggingface_hub if you would like to download models conveniently from huggingface
 
+has_mmdet = False
+has_mmseg = False
 #   =============== for the ease of directly using this file in MMSegmentation and MMDetection.
 #   =============== ignore the following two segments of code if you do not plan to do so
 #   =============== delete one of the following two segments if you get a confliction
@@ -29,18 +31,15 @@ try:
     from mmcv.runner import _load_checkpoint
     has_mmseg = True
 except ImportError:
-    has_mmseg = False
     get_root_logger = None
     _load_checkpoint = None
 
-has_mmdet = False
 # try:
 #     from mmdet.models.builder import BACKBONES as det_BACKBONES
 #     from mmdet.utils import get_root_logger
 #     from mmcv.runner import _load_checkpoint
 #     has_mmdet = True
 # except ImportError:
-#     has_mmdet = False
 #     get_root_logger = None
 #     _load_checkpoint = None
 #   ===========================================================================================
