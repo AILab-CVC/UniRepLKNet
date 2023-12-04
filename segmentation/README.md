@@ -4,7 +4,6 @@ This folder contains the implementation of the UniRepLKNet for semantic segmenta
 
 Our segmentation code is developed on top of [MMSegmentation v0.27.0](https://github.com/open-mmlab/mmsegmentation/tree/v0.27.0).
 
-## Usage
 
 ### Install
 
@@ -97,10 +96,10 @@ sh dist_train.sh configs/ade20k/upernet_unireplknet_t_512_160k_ade20k.py 8
 
 ### Manage Jobs with Slurm
 
-For example, to train `UniRepLKNet-B` with 8 GPU on 1 node (total batch size 16), run:
+For example, to train `UniRepLKNet-B` with 32 GPU on 4 node, 1) modify the batch size and number of iterations in the config files accordingly, and 2) run
 
 ```bash
-GPUS=8 sh slurm_train.sh <partition> <job-name> configs/ade20k/upernet_unireplknet_b_in22k_640_160k_ade20k.py
+GPUS=32 sh slurm_train.sh <partition> <job-name> configs/ade20k/upernet_unireplknet_b_in22k_640_160k_ade20k.py
 ```
 
 ### Image Demo
