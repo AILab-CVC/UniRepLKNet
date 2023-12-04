@@ -52,18 +52,16 @@
 
 ## Highlights
 
-In this paper, we contribute from two aspects:
+A **ConvNet unifies multiple modalities and outperforms modality-specific models**. This paper summarizes architectural guidelines to build large-kernel CNN, which works amazingly well with images and other modalities. This is the latest contribution to both two influential areas - **Structural Re-param** (since RepVGG, Ding et al. 2021) and **very-large-kernel ConvNet** (since RepLKNet, Ding et al. 2022). **ImageNet accuracy of 88.0%, COCO AP of 56.4, ADE20K mIoU of 55.6 with only ImageNet-22K pretraining**. Higher actual speed and performance than recent models like ConvNeXt v2 and InternImage. With a unified architecture and extremely simple modality-specific preprocessing, achieves state-of-the-art performances on audio recognition and, most amazingly, **Global Temperature & Wind Speed Forecasting** (a challenging huge-scale time-series forecasting task), outperforming the existing global forecasting system.
+
+More specifically, we contribute from two aspects:
 * We propose four architectural guidelines for designing
 large-kernel ConvNets, the core of which is to exploit
 the essential characteristics of large kernels that distinguish
 them from small kernels - they can see wide without
 going deep. Following such guidelines, our proposed
 large-kernel ConvNet shows leading performance in image
-recognition. For example, our models achieve an ImageNet
-accuracy of 88.0%, ADE20K mIoU of 55.6%, and COCO
-box AP of 56.4%, demonstrating better performance and
-higher speed than a number of recently proposed powerful
-competitors. 
+recognition.  
 * We discover that large kernels are the key to
 unlocking the exceptional performance of ConvNets in domains
 where they were originally not proficient. With certain
@@ -172,13 +170,11 @@ See our [huggingface repo](https://huggingface.co/DingXiaoH/UniRepLKNet/tree/mai
 
 ### COCO Object Detection
 
-Code and config files have been released. 
+Code, document, and config files have been released. See the [detection guide](detection/README.md) here.
 
-Checkpoints have been already released on hugging face. Please see https://huggingface.co/DingXiaoH/UniRepLKNet/tree/main. You can download them right now.
+Checkpoints have already been released on hugging face. Please see https://huggingface.co/DingXiaoH/UniRepLKNet/tree/main. You can download them right now.
 
 We are also uploading the checkpoints to Google Drive. The links below will be updated.
-
-Will update with a README in one day.
 
 
 | name | resolution |box mAP | mask mAP | #params | FLOPs | Weights |
@@ -194,7 +190,7 @@ Will update with a README in one day.
 
 Code, document, and config files have been released. See the [segmentation guide](segmentation/README.md) here.
 
-Checkpoints have been already released on hugging face. Please see https://huggingface.co/DingXiaoH/UniRepLKNet/tree/main. You can download them right now.
+Checkpoints have already been released on hugging face. Please see https://huggingface.co/DingXiaoH/UniRepLKNet/tree/main. You can download them right now.
 
 We are also uploading the checkpoints to Google Drive. The links below will be updated.
 
@@ -229,14 +225,14 @@ python -m torch.distributed.launch --nproc_per_node=8 main.py \
 ```
 For training or finetuning UniRepLKNets on ImageNet-1K or 22K, see [THIS DOC](/Image/README.md)
 
-## Universal perception on audio, video, point cloud, and time-series tasks
+## Universal perception of audio, video, point cloud, and time-series tasks
 
 For detailed documentation, please refer to these documents as follows:
 
-* Audio for [Audio DOC](/Audio/README.md)
-* Point Cloud [Point Cloud DOC](/Point/README.md)
-* Time-Series [Time-Series DOC](/Time-Series/README.md)
-* Video [Video DOC](/Video/README.md)
+* [Audio DOC](/Audio/README.md)
+* [Point Cloud DOC](/Point/README.md)
+* [Time-Series DOC](/Time-Series/README.md)
+* [Video DOC](/Video/README.md)
 
 ## Use an efficient large-kernel convolution with PyTorch
 
