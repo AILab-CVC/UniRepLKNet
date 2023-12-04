@@ -46,6 +46,10 @@
   <img alt="License: Apache2.0" src="https://img.shields.io/badge/LICENSE-Apache%202.0-blue.svg"/>
 </a>
 
+**Star and watch me if you are interested in this project :)**
+
+**There may be some bugs. Please raise an issue if you get one. The code will be thoroughly tested in the next several days.**
+
 ## Motivation 
 * We note that most architectures of the existing large-kernel ConvNets simply follow other models. **The architectural design for large-kernel ConvNets remains under-explored.**
 * The *universal perception ability* of Transformers is sparking in multimodal research areas (image, audio, video, time-series, *etc*). We are curious whether ConvNets can also deliver **universal perception ability across multiple modalities with a unified architecture**.
@@ -80,16 +84,15 @@ modality-specific customization to the architecture.
 - [x] PyTorch efficient large-kernel conv implementation
 - [x] ImageNet training code
 - [x] Code and documents of audio, video, point cloud, and time-series tasks
-- [x] Semantic segmentation code, document, and some checkpoints
-- [ ] Better documentation
-- [ ] All the object detection and semantic segmentation models
+- [x] Semantic segmentation code, document, and most checkpoints
+- [x] Object detection code, document, and all the checkpoints
 - [ ] Checkpoints of audio, video, point cloud, and time-series tasks
+
+The ImageNet, COCO, and ADE20K checkpoints have been released (see the huggingface repo shown below), except the ImageNet-22K pretrained UniRepLKNet-S, and UperNet with UniRepLKNet-XL, which were lost, and we are reproducing them.
 
 Latest news: fixed a bug, which results from [this commit](https://github.com/AILab-CVC/UniRepLKNet/commit/920b7251ea3d52ab476d0f40ba722db56d9a7e03) on Dec 1st, 2023. [Now it is fixed ](https://github.com/AILab-CVC/UniRepLKNet/commit/5349bcee9a8202c62c8c169220f8cc613914baac). If you used unireplknet.py after Dec 1st, 2023, please check your code.
 
-**Star and watch me if you are interested in this project :)**
 
-**There may be some bugs. Please raise an issue if you get one. The code will be thoroughly tested in the next several days.**
 
 
 ## Code design
