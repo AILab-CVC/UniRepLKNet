@@ -100,20 +100,20 @@ Latest news: fixed a bug, which results from [this commit](https://github.com/AI
 1. There is some MMDetection- and MMSegmentation-related code in ```unireplknet.py``` so that you can directly copy-paste it into your MMDetection or MMSegmentation, e.g., [here](unireplknet.py#L29) and [here](unireplknet.py#L617). If you do not want to use it with MMDetection or MMSegmentation, you can safely delete those lines of code.
 2. We have provided code to automatically build our models and load our released weights. See the functions [here](unireplknet.py#L726). You can also use ```timm.create_model``` to build the models. For example, ```model = timm.create_model('unireplknet_l', num_classes=num_classes_of_your_task, in_22k_pretrained=True)``` will call the function ```unireplknet_l``` defined [here](https://github.com/AILab-CVC/UniRepLKNet/blob/main/unireplknet.py#L745), which will build a UniRepLKNet-L and automatically download our checkpoints and load the weights.
 3. As UniRepLKNet also uses the Structural Re-parameterization methodology, we provide a function ```reparameterize_unireplknet()``` that converts a trained UniRepLKNet into the inference structure, which equivalently removes the parallel branches in Dialted Reparam Blocks, Batch Norm layers, and the bias term in GRN. The pseudo-code of the full pipeline will be like
-```
-        training_model = unireplknet_l(...,  deploy=False)
-        train(training_model)
-        trained_results = evaluate(training_model)
-        training_model.reparameterize_unireplknet()
-        inference_results = evaluate(training_model)
-        # you will see inference_results are identical to trained_results
-        save(training_model, 'converted_weights.pth')
-        # use the converted model
-        deploy_model = unireplknet_l(..., deploy=True)
-        load_weights(deploy_model, 'converted_weights.pth')
-        deploy_results = evaluate(deploy_model)
-        # you will see deploy_results == inference_results == trained_results
-```
+    ```python
+    training_model = unireplknet_l(...,  deploy=False)
+    train(training_model)
+    trained_results = evaluate(training_model)
+    training_model.reparameterize_unireplknet()
+    inference_results = evaluate(training_model)
+    # you will see inference_results are identical to trained_results
+    save(training_model, 'converted_weights.pth')
+    # use the converted model
+    deploy_model = unireplknet_l(..., deploy=True)
+    load_weights(deploy_model, 'converted_weights.pth')
+    deploy_results = evaluate(deploy_model)
+    # you will see deploy_results == inference_results == trained_results
+    ```
 4. You may want to read this if you are familiar with the [timm](https://github.com/huggingface/pytorch-image-models/tree/main) library. We sincerely thank timm for providing a convenient [re-parameterize function](https://github.com/huggingface/pytorch-image-models/blob/main/timm/utils/model.py#L225). The code design of UniRepLKNet is compatible with it. That is, calling ```some_unireplknet_model.reparameterize_unireplknet()``` is equivalent to calling ```timm.utils.reparameterize_model(some_unireplknet_model)```. So if you use our code with timm's codebase, e.g., timm's evaluation code, just add ```--reparam``` to your command so that ```timm.utils.reparameterize_model``` will be called (see [here](https://github.com/huggingface/pytorch-image-models/blob/main/validate.py#L128)).
 
 
@@ -129,12 +129,12 @@ We have provided five ways to download our checkpoints.
 pip install huggingface_hub
 ```
 Then, use huggingface_hub like this in your python code, for example,
-```
-        from huggingface_hub import hf_hub_download
-        repo_id = 'DingXiaoH/UniRepLKNet'
-        cache_file = hf_hub_download(repo_id=repo_id, filename=FILE_NAME)
-        checkpoint = torch.load(cache_file, map_location='cpu')
-        model.load_state_dict(checkpoint)
+```python
+from huggingface_hub import hf_hub_download
+repo_id = 'DingXiaoH/UniRepLKNet'
+cache_file = hf_hub_download(repo_id=repo_id, filename=FILE_NAME)
+checkpoint = torch.load(cache_file, map_location='cpu')
+model.load_state_dict(checkpoint)
 ```
 See our [huggingface repo](https://huggingface.co/DingXiaoH/UniRepLKNet/tree/main) or [our code](unireplknet.py#L670) for FILE_NAME (e.g., ```unireplknet_xl_in22k_pretrain.pth```).
 
@@ -177,17 +177,17 @@ Code, document, and config files have been released. See the [detection guide](d
 
 Checkpoints have already been released on hugging face. Please see https://huggingface.co/DingXiaoH/UniRepLKNet/tree/main. You can download them right now.
 
-We are also uploading the checkpoints to Google Drive. The links below will be updated.
+Or you can download these checkpoints with Google Drive as follows:
 
 
 | name | resolution |box mAP | mask mAP | #params | FLOPs | Weights |
 |:---:|:---:|:---:|:---:| :---:|:---:|:---:|
-| UniRepLKNet-T | 1280x800 | 51.7 | 44.9 | 89M  | 749G | TBA |
-| UniRepLKNet-S | 1280x800 | 53.0 | 45.9 | 113M  | 835G | TBA |
-| UniRepLKNet-S_22K | 1280x800 | 54.3 | 47.1 | 113M  | 835G | TBA |
-| UniRepLKNet-B_22K | 1280x800 | 54.8 | 47.4 | 155M  | 978G | TBA |
-| UniRepLKNet-L_22K | 1280x800 | 55.8 | 48.4 | 276M  | 1385G | TBA |
-| UniRepLKNet-XL_22K | 1280x800 | 56.4 | 49.0 | 443M  | 1952G | TBA |
+| UniRepLKNet-T | 1280x800 | 51.7 | 44.9 | 89M  | 749G | [ckpt](https://drive.google.com/file/d/15LVEXyC8xxOIHhUeSFeolyZ1IVXVjQ4I/view?usp=drive_link) |
+| UniRepLKNet-S | 1280x800 | 53.0 | 45.9 | 113M  | 835G | [ckpt](https://drive.google.com/file/d/1wcdMn35aMLgjIFVEIaJYMjOwMtuoz58I/view?usp=drive_link) |
+| UniRepLKNet-S_22K | 1280x800 | 54.3 | 47.1 | 113M  | 835G | [ckpt](https://drive.google.com/file/d/1pZmrLRbM8bjiQvr_xenReXmtA7M3f_Ii/view?usp=sharing) |
+| UniRepLKNet-B_22K | 1280x800 | 54.8 | 47.4 | 155M  | 978G | [ckpt](https://drive.google.com/file/d/1CCyk0q4E4tuFLWqafHIC-DywdJJ0-pMQ/view?usp=drive_link) |
+| UniRepLKNet-L_22K | 1280x800 | 55.8 | 48.4 | 276M  | 1385G | [ckpt](https://drive.google.com/file/d/1m9WzhfhEF1KKxLH8IxE5vkM7HlucJu4N/view?usp=drive_link) |
+| UniRepLKNet-XL_22K | 1280x800 | 56.4 | 49.0 | 443M  | 1952G | [ckpt](https://drive.google.com/file/d/1np1zCV_34MdOsViKMVdO1l4feLe8evmp/view?usp=drive_link) |
 
 ### ADE-20K Semantic Segmentation
 
@@ -195,16 +195,16 @@ Code, document, and config files have been released. See the [segmentation guide
 
 Checkpoints have already been released on hugging face. Please see https://huggingface.co/DingXiaoH/UniRepLKNet/tree/main. You can download them right now.
 
-We are also uploading the checkpoints to Google Drive. The links below will be updated.
+Or you can download these checkpoints with Google Drive as follows:
 
 | name | resolution |mIoU (ss/ms) | #params | FLOPs | Weights |
 |:---:|:---:|:---:|:---:| :---:|:---:|
-| UniRepLKNet-T | 512x512 | 48.6/49.1 | 61M | 946G  | TBA |
-| UniRepLKNet-S | 512x512 | 50.5/51.0 | 86M  | 1036G | TBA |
-| UniRepLKNet-S_22K | 512x512 | 51.9/52.7 | 86M  | 1036G | TBA |
-| UniRepLKNet-S_22K | 640x640 | TBA | 86M  | TBA | TBA |
-| UniRepLKNet-B_22K | 640x640 | 53.5/53.9 | 130M  | 1850G | TBA |
-| UniRepLKNet-L_22K | 640x640 | 54.5/55.0 | 254M  | 2507G | TBA |
+| UniRepLKNet-T | 512x512 | 48.6/49.1 | 61M | 946G  | [ckpt](https://drive.google.com/file/d/1R2teeQt7q48EBBRbeVXShISpOmS5YHjs/view?usp=drive_link) |
+| UniRepLKNet-S | 512x512 | 50.5/51.0 | 86M  | 1036G | [ckpt](https://drive.google.com/file/d/1SBHvbK4zoPSZ827F5Sp209LYIh2T7Iew/view?usp=drive_link) |
+| UniRepLKNet-S_22K | 512x512 | 51.9/52.7 | 86M  | 1036G | [ckpt](https://drive.google.com/file/d/15dNuw34kia5qtt6UijcnutEktY05OrKH/view?usp=drive_link) |
+| UniRepLKNet-S_22K | 640x640 | TBA | 86M  | TBA |  TBA |
+| UniRepLKNet-B_22K | 640x640 | 53.5/53.9 | 130M  | 1850G | [ckpt](https://drive.google.com/file/d/1sflCn8ny-cU5Bk8yBGE3E-yIO8eECE0H/view?usp=drive_link) |
+| UniRepLKNet-L_22K | 640x640 | 54.5/55.0 | 254M  | 2507G | [ckpt](https://drive.google.com/file/d/1Qev75aKZY5bNAM17cLecD2OoZwKf5DA7/view?usp=drive_link) |
 | UniRepLKNet-XL_22K | 640x640 | 55.2/55.6 | 425M  | 3420G | TBA |
 
 ## ImageNet evaluation and training
