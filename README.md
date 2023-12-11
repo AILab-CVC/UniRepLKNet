@@ -84,7 +84,7 @@ modality-specific customization to the architecture.
 - [x] PyTorch efficient large-kernel conv implementation
 - [x] ImageNet training code
 - [x] Code and documents of audio, video, point cloud, and time-series tasks
-- [x] Semantic segmentation code, document, and most checkpoints
+- [x] Semantic segmentation code, document, and all the checkpoints
 - [x] Object detection code, document, and all the checkpoints
 - [ ] Checkpoints of audio, video, point cloud, and time-series tasks
 
@@ -175,9 +175,9 @@ See our [huggingface repo](https://huggingface.co/DingXiaoH/UniRepLKNet/tree/mai
 
 Code, document, and config files have been released. See the [detection guide](detection/README.md) here.
 
-Checkpoints have already been released on hugging face. Please see https://huggingface.co/DingXiaoH/UniRepLKNet/tree/main. You can download them right now.
+Checkpoints have already been released on hugging face. You can download them right now from https://huggingface.co/DingXiaoH/UniRepLKNet/tree/main.
 
-Or you can download these checkpoints with Google Drive as follows:
+Or you can download these checkpoints from Google Drive as follows:
 
 
 | name | resolution |box mAP | mask mAP | #params | FLOPs | Weights |
@@ -193,9 +193,9 @@ Or you can download these checkpoints with Google Drive as follows:
 
 Code, document, and config files have been released. See the [segmentation guide](segmentation/README.md) here.
 
-Checkpoints have already been released on hugging face. Please see https://huggingface.co/DingXiaoH/UniRepLKNet/tree/main. You can download them right now.
+Checkpoints have already been released on hugging face. You can download them right now from https://huggingface.co/DingXiaoH/UniRepLKNet/tree/main.
 
-Or you can download these checkpoints with Google Drive as follows:
+Or you can download these checkpoints from Google Drive as follows:
 
 | name | resolution |mIoU (ss/ms) | #params | FLOPs | Weights |
 |:---:|:---:|:---:|:---:| :---:|:---:|
@@ -226,16 +226,16 @@ python -m torch.distributed.launch --nproc_per_node=8 main.py \
 --input_size 384 \
 --data_path /path/to/imagenet-1k
 ```
-For training or finetuning UniRepLKNets on ImageNet-1K or 22K, see [THIS DOC](/Image/README.md)
+For training or finetuning UniRepLKNets on ImageNet-1K or 22K, see [this guide](/Image/README.md)
 
 ## Universal perception of audio, video, point cloud, and time-series tasks
 
 For detailed documentation, please refer to these documents as follows:
 
-* [Audio DOC](/Audio/README.md)
-* [Point Cloud DOC](/Point/README.md)
-* [Time-Series DOC](/Time-Series/README.md)
-* [Video DOC](/Video/README.md)
+* [Audio guide](/Audio/README.md)
+* [Point cloud guide](/Point/README.md)
+* [Time-series forecasting guide](/Time-Series/README.md)
+* [Video guide](/Video/README.md)
 
 ## Use an efficient large-kernel convolution with PyTorch
 
