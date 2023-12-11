@@ -157,7 +157,7 @@ See our [huggingface repo](https://huggingface.co/DingXiaoH/UniRepLKNet/tree/mai
 
 | name | resolution | #params | FLOPs | ckpt |
 |:---:|:---:|:---:|:---:| :---:|
-| UniRepLKNet-S | 224x224 | 56M | 26.7G  | (lost. reproducing) |
+| UniRepLKNet-S | 224x224 | 56M | 26.7G  | [ckpt](https://drive.google.com/file/d/18ljg1qZKNxNvpUuOnrZSZ_DS81vGVU_9/view?usp=drive_link) |
 | UniRepLKNet-B | 224x224 | 98M   | 47.2G   | [ckpt](https://drive.google.com/file/d/1t1txZOTpwXGUMVsqyUxpzE5EGLqMX5li/view?usp=drive_link)|
 | UniRepLKNet-L | 192x192 | 218M  | 105.4G   | [ckpt](https://drive.google.com/file/d/1PEY474n6a7pZ3vJitsU7ZLzwBI00pf7u/view?usp=drive_link)|
 | UniRepLKNet-XL | 192x192 | 386M  | 187G  | [ckpt](https://drive.google.com/file/d/1OP7I0jabljm8LKXTypk4HDmF9dQQqYib/view?usp=drive_link)|
@@ -169,7 +169,7 @@ See our [huggingface repo](https://huggingface.co/DingXiaoH/UniRepLKNet/tree/mai
 | UniRepLKNet-S | 384x384 | 86.4 | 56M | 26.7G  | [ckpt](https://drive.google.com/file/d/1PzEHFOgEllMRIB-emkX_2VjXyBYC_X0z/view?usp=drive_link)|
 | UniRepLKNet-B | 384x384 | 87.4 | 98M   | 47.2G   | [ckpt](https://drive.google.com/file/d/1T4BB3xx6FsWrK5QpTy7FwBrLuOMcZcEu/view?usp=drive_link)|
 | UniRepLKNet-L | 384x384 | 87.9 | 218M  | 105.4G   | [ckpt](https://drive.google.com/file/d/10jJGzXX3cFRrfk3oAoIoWRnKSAaquQtM/view?usp=drive_link)|
-| UniRepLKNet-XL | 384x384 | 88.0 | 386M  | 187G  | (lost. reproducing)|
+| UniRepLKNet-XL | 384x384 | 88.0 | 386M  | 187G  | [ckpt](https://drive.google.com/file/d/1bS6DfAdQW-tHfyKOEpE_fXypi45CLnT3/view?usp=sharing)|
 
 ### COCO Object Detection
 
@@ -202,10 +202,10 @@ Or you can download these checkpoints from Google Drive as follows:
 | UniRepLKNet-T | 512x512 | 48.6/49.1 | 61M | 946G  | [ckpt](https://drive.google.com/file/d/1R2teeQt7q48EBBRbeVXShISpOmS5YHjs/view?usp=drive_link) |
 | UniRepLKNet-S | 512x512 | 50.5/51.0 | 86M  | 1036G | [ckpt](https://drive.google.com/file/d/1SBHvbK4zoPSZ827F5Sp209LYIh2T7Iew/view?usp=drive_link) |
 | UniRepLKNet-S_22K | 512x512 | 51.9/52.7 | 86M  | 1036G | [ckpt](https://drive.google.com/file/d/15dNuw34kia5qtt6UijcnutEktY05OrKH/view?usp=drive_link) |
-| UniRepLKNet-S_22K | 640x640 | TBA | 86M  | TBA |  TBA |
+| UniRepLKNet-S_22K | 640x640 | 52.3/- | 86M  | 1036G | [ckpt](https://drive.google.com/file/d/1WVmAQ8sKDeX0APS9Q88z4dZge31kHx2v/view?usp=sharing) |   |
 | UniRepLKNet-B_22K | 640x640 | 53.5/53.9 | 130M  | 1850G | [ckpt](https://drive.google.com/file/d/1sflCn8ny-cU5Bk8yBGE3E-yIO8eECE0H/view?usp=drive_link) |
 | UniRepLKNet-L_22K | 640x640 | 54.5/55.0 | 254M  | 2507G | [ckpt](https://drive.google.com/file/d/1Qev75aKZY5bNAM17cLecD2OoZwKf5DA7/view?usp=drive_link) |
-| UniRepLKNet-XL_22K | 640x640 | 55.2/55.6 | 425M  | 3420G | TBA |
+| UniRepLKNet-XL_22K | 640x640 | 55.2/55.6 | 425M  | 3420G | [ckpt](https://drive.google.com/file/d/1Ajwc7ZOk5eK19XX6VzgmAu2Wn0Dkb3jI/view?usp=sharing) |
 
 ## ImageNet evaluation and training
 
