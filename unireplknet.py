@@ -665,14 +665,14 @@ huggingface_file_names = {
     "unireplknet_n_1k": "unireplknet_n_in1k_224_acc81.64.pth",
     "unireplknet_t_1k": "unireplknet_t_in1k_224_acc83.21.pth",
     "unireplknet_s_1k": "unireplknet_s_in1k_224_acc83.91.pth",
-    "unireplknet_s_22k": "FILE LOST. REPRODUCING",
+    "unireplknet_s_22k": "unireplknet_s_in22k_pretrain.pth",
     "unireplknet_s_22k_to_1k": "unireplknet_s_in22k_to_in1k_384_acc86.44.pth",
     "unireplknet_b_22k": "unireplknet_b_in22k_pretrain.pth",
     "unireplknet_b_22k_to_1k": "unireplknet_b_in22k_to_in1k_384_acc87.40.pth",
     "unireplknet_l_22k": "unireplknet_l_in22k_pretrain.pth",
     "unireplknet_l_22k_to_1k": "unireplknet_l_in22k_to_in1k_384_acc87.88.pth",
     "unireplknet_xl_22k": "unireplknet_xl_in22k_pretrain.pth",
-    "unireplknet_xl_22k_to_1k": "FILE LOST. REPRODUCING"
+    "unireplknet_xl_22k_to_1k": "unireplknet_xl_in22k_to_in1k_384_acc87.96.pth"
 }
 
 def load_with_key(model, key):
