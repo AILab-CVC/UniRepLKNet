@@ -146,7 +146,7 @@ def fuse_bn(conv, bn):
     return conv.weight * (bn.weight / std).reshape(-1, 1, 1, 1), bn.bias + (conv_bias - bn.running_mean) * bn.weight / std
 
 def convert_dilated_to_nondilated(kernel, dilate_rate):
-    identity_kernel = torch.ones((1, 1, 1, 1))
+    identity_kernel = torch.ones((1, 1, 1, 1)).to(kernel.device)
     if kernel.size(1) == 1:
         #   This is a DW kernel
         dilated = F.conv_transpose2d(kernel, identity_kernel, stride=dilate_rate)
@@ -336,7 +336,7 @@ class UniRepLKNetBlock(nn.Module):
                             self.dwconv.lk_origin.bias - self.norm.running_mean) * self.norm.weight / std
             else:
                 conv = nn.Conv2d(self.dwconv.in_channels, self.dwconv.out_channels, self.dwconv.kernel_size,
-                                 self.dwconv.padding, self.dwconv.groups, bias=True)
+                                 padding=self.dwconv.padding, groups=self.dwconv.groups, bias=True)
                 conv.weight.data = self.dwconv.weight * (self.norm.weight / std).view(-1, 1, 1, 1)
                 conv.bias.data = self.norm.bias - self.norm.running_mean * self.norm.weight / std
                 self.dwconv = conv
