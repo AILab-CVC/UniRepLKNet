@@ -239,14 +239,13 @@ For detailed documentation, please refer to these documents as follows:
 
 ## Use an efficient large-kernel convolution with PyTorch
 
-We use a large-kernel conv implementation in **PyTorch** that is more efficient than the native torch.nn.Conv2d . It is implemented based on the iGEMM algorithm. Please check ```setup.py``` and ```depthwise_conv2d_implicit_gemm.py``` (**a replacement of torch.nn.Conv2d**) in https://github.com/MegEngine/cutlass/tree/master/examples/19_large_depthwise_conv2d_torch_extension.
+We use a large-kernel conv implementation in **PyTorch** that is more efficient than the native torch.nn.Conv2d . It is implemented based on the iGEMM algorithm. The installation is very simple and will cost you less than one minute. If you do not install this implementation, you can still use our model anywhere you wish but it will be a bit slower.
 
-1. ```unzip cutlass.zip```, enter the directory. This version of cutlass works fine with our large-kernel implementation and multiple python versions. You may alternatively use the cutlass branch maintained by the MegEngine team (clone https://github.com/MegEngine/cutlass), but you may need to be more careful with your python version (see [this issue](https://github.com/DingXiaoH/RepLKNet-pytorch/issues/34)).
+1. Download [cutlass.zip](cutlass.zip), then ```unzip cutlass.zip```, enter the directory. This version of cutlass provided in this repository works fine with our large-kernel implementation and multiple python versions. You may alternatively use the cutlass branch maintained by the MegEngine team (clone https://github.com/MegEngine/cutlass), but you may need to be more careful with your python version (see [this issue](https://github.com/DingXiaoH/RepLKNet-pytorch/issues/34)).
 2. ```cd examples/19_large_depthwise_conv2d_torch_extension```
 3. ```./setup.py install --user```. If you get errors, check your ```CUDA_HOME```.
-4. A quick check: ```python depthwise_conv2d_implicit_gemm.py```
-5. Add ```WHERE_YOU_CLONED_CUTLASS/examples/19_large_depthwise_conv2d_torch_extension``` into your ```PYTHONPATH``` so that you can ```from depthwise_conv2d_implicit_gemm import DepthWiseConv2dImplicitGEMM``` anywhere. Then you may use ```DepthWiseConv2dImplicitGEMM``` as a replacement of ```nn.Conv2d```.
-6. If you do not install this implementation, you can still use our model anywhere you wish but it will be a bit slower.
+4. You may do a quick check to verify that the results of forward/backward computations are the same as torch.nn.Conv2d: ```python depthwise_conv2d_implicit_gemm.py```
+5. Add ```PATH_TO_CUTLASS_DIRECTORY/examples/19_large_depthwise_conv2d_torch_extension``` into your ```PYTHONPATH``` so that you can ```from depthwise_conv2d_implicit_gemm import DepthWiseConv2dImplicitGEMM``` anywhere. Then you may use ```DepthWiseConv2dImplicitGEMM``` as a replacement of ```nn.Conv2d```.
 
 It should work with a wide range of GPUs and PyTorch/CUDA versions. We suggest you try first and check the environments only if you get any errors. Our latest testes used both
 
