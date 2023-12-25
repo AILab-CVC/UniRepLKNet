@@ -140,7 +140,7 @@ See our [huggingface repo](https://huggingface.co/DingXiaoH/UniRepLKNet/tree/mai
 
 4. Use the huggingface CLI. Check the [tutorial](https://huggingface.co/docs/huggingface_hub/guides/download#download-from-the-cli).
 
-5. Automatically download our checkpoints by passing ```in_1k_pretrained=True```, ```in_22k_pretrained=True```, or ```in_22k_to_1k=False``` while calling our provided functions. See the [code here](unireplknet.py#L738).
+5. Automatically download our checkpoints by passing ```in_1k_pretrained=True```, ```in_22k_pretrained=True```, or ```in_22k_to_1k=True``` while calling our provided functions. See the [code here](unireplknet.py#L738).
 
 ### ImageNet-1K Pretrained Weights
 
