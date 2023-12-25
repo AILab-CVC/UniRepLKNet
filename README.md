@@ -48,7 +48,7 @@
 
 **Star and watch me if you are interested in this project :)**
 
-**Code and checkpoints have been thoroughly tested. Please raise an issue if you get a bug. And do not hesitate to try our efficient implementation of large-kernel convolution with PyTorch (see [here](https://github.com/AILab-CVC/UniRepLKNet/edit/main/README.md#L250))!**
+**Code and checkpoints have been thoroughly tested. Please raise an issue if you get a bug. And do not hesitate to try our efficient implementation of large-kernel convolution with PyTorch (see [here](https://github.com/AILab-CVC/UniRepLKNet/blob/main/README.md#L250))!**
 
 ## Motivation 
 * We note that most architectures of the existing large-kernel ConvNets simply follow other models. **The architectural design for large-kernel ConvNets remains under-explored.**
