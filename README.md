@@ -50,6 +50,11 @@
 
 **Code and checkpoints have been thoroughly tested. Please raise an issue if you get a bug. And do not hesitate to try our efficient implementation of large-kernel convolution with PyTorch (see [here](https://github.com/AILab-CVC/UniRepLKNet/blob/main/README.md#L250))!**
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=AILab-CVC/UniRepLKNet&type=Date)](https://star-history.com/#AILab-CVC/UniRepLKNet&Date)
+
+
 ## Motivation 
 * We note that most architectures of the existing large-kernel ConvNets simply follow other models. **The architectural design for large-kernel ConvNets remains under-explored.**
 * The *universal perception ability* of Transformers is sparking in multimodal research areas (image, audio, video, time-series, *etc*). We are curious whether ConvNets can also deliver **universal perception ability across multiple modalities with a unified architecture**.
