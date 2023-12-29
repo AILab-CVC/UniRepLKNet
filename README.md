@@ -50,7 +50,9 @@
 
 **Code and checkpoints have been thoroughly tested. Please raise an issue if you get a bug. And do not hesitate to try our efficient implementation of large-kernel convolution with PyTorch (see [here](https://github.com/AILab-CVC/UniRepLKNet/blob/main/README.md#L250))!**
 
-[![Star History Chart](https://api.star-history.com/svg?repos=AILab-CVC/UniRepLKNet&type=Date)](https://star-history.com/#AILab-CVC/UniRepLKNet&Date){ width=50% height=auto }
+<a href="https://star-history.com/#AILab-CVC/UniRepLKNet&Date">
+  <img src="https://api.star-history.com/svg?repos=AILab-CVC/UniRepLKNet&type=Date" width="50%" alt="Star History Chart">
+</a>
 
 
 ## Motivation 
