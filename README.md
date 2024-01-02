@@ -107,7 +107,7 @@ Latest news: fixed a bug, which results from [this commit](https://github.com/AI
    ```
    # The simplest way to use our model in your project is to copy-paste unireplknet.py into your working directory and create models. For example
    from unireplknet import *
-   model = timm.create_model(unireplknet_l', num_classes=num_classes_of_your_task, in_22k_pretrained=True)
+   model = timm.create_model('unireplknet_l', num_classes=num_classes_of_your_task, in_22k_pretrained=True)
    ```
 4. As UniRepLKNet also uses the Structural Re-parameterization methodology, we provide a function ```reparameterize_unireplknet()``` that converts a trained UniRepLKNet into the inference structure, which equivalently removes the parallel branches in Dialted Reparam Blocks, Batch Norm layers, and the bias term in GRN. The pseudo-code of the full pipeline will be like
     ```python
