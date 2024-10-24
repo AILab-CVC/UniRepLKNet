@@ -1,7 +1,7 @@
 ## UniRepLKNet: A Universal Perception Large-Kernel ConvNet for Audio, Video,Point Cloud, Time-Series and Image Recognition
 
 <p align="center" width="100%">
-<img src="assets/banner.png"  width="100%" height="60%">
+<img src="assets/UniRepLKNet.png"  width="100%" height="60%">
 </p>
 
 
@@ -40,19 +40,14 @@
 </div>
 
 [![arXiv](https://img.shields.io/badge/arxiv-2311.15599-b31b1b?style=plastic&color=b31b1b&link=https%3A%2F%2Farxiv.org%2Fabs%2F2311.15599)](https://arxiv.org/abs/2311.15599)
+[![arXiv](https://img.shields.io/badge/arxiv-2410.08049-b31b1b?style=plastic&color=b31b1b&link=https%3A%2F%2Farxiv.org%2Fabs%2F2410.08049)](https://arxiv.org/abs/2410.08049)
 [![Hugging Face Models](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-blue)](https://huggingface.co/DingXiaoH/UniRepLKNet/tree/main)
 [![website](https://img.shields.io/badge/Project-Website-blueviolet)](https://invictus717.github.io/UniRepLKNet/)
 <a href="#LICENSE--citation">
   <img alt="License: Apache2.0" src="https://img.shields.io/badge/LICENSE-Apache%202.0-blue.svg"/>
 </a>
 
-**Star and watch me if you are interested in this project :)**
-
-**Code and checkpoints have been thoroughly tested. Please raise an issue if you get a bug. And do not hesitate to try our efficient implementation of large-kernel convolution with PyTorch (see [here](https://github.com/AILab-CVC/UniRepLKNet/blob/main/README.md#L250))!**
-
-<a href="https://star-history.com/#AILab-CVC/UniRepLKNet&Date">
-  <img src="https://api.star-history.com/svg?repos=AILab-CVC/UniRepLKNet&type=Date" width="50%" alt="Star History Chart">
-</a>
+🌟🌟🌟 ***News***: The extended journal version of UniRepLKNet is released at [arxiv](https://arxiv.org/abs/2410.08049).
 
 
 ## Motivation 
@@ -271,11 +266,19 @@ Pull requests (e.g., better or other implementations or implementations on other
 If the code and paper help your research, please kindly cite:
 
 ```
-@article{ding2023unireplknet,
-  title={UniRepLKNet: A Universal Perception Large-Kernel ConvNet for Audio, Video, Point Cloud, Time-Series and Image Recognition},
+@article{zhang2024scaling,
+  title={Scaling Up Your Kernels: Large Kernel Design in ConvNets towards Universal Representations},
+  author={Zhang, Yiyuan and Ding, Xiaohan and Yue, Xiangyu},
+  journal={arXiv preprint arXiv:2410.08049},
+  year={2024}
+}
+
+@inproceedings{ding2024unireplknet,
+  title={UniRepLKNet: A Universal Perception Large-Kernel ConvNet for Audio Video Point Cloud Time-Series and Image Recognition},
   author={Ding, Xiaohan and Zhang, Yiyuan and Ge, Yixiao and Zhao, Sijie and Song, Lin and Yue, Xiangyu and Shan, Ying},
-  journal={arXiv preprint arXiv:2311.15599},
-  year={2023}
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={5513--5524},
+  year={2024}
 }
 ```
 ## License
