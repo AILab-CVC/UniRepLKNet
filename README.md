@@ -1,43 +1,8 @@
-## UniRepLKNet: A Universal Perception Large-Kernel ConvNet for Audio, Video,Point Cloud, Time-Series and Image Recognition
-
-<p align="center" width="100%">
-<img src="assets/UniRepLKNet.png"  width="100%" height="60%">
+<p align="center">
+<h1 align="center"><strong>UniRepLKNet: CVPR 2024,  TPAMI 2025</strong></h1>
+  <p align="center">
+  </p>
 </p>
-
-
-<div align="center">
-    <span class="author-block">
-    <a href="https://dingxiaohan.xyz/" target="_blank">Xiaohan Ding</a><sup>1*</sup>,
-    </span>
-    <span class="author-block">
-    <a href="https://invictus717.github.io/" target="_blank">Yiyuan Zhang</a><sup>2*</sup>,</span>
-    <span class="author-block">
-    </span>
-    <a href="https://geyixiao.com/" target="_blank">Yixiao Ge</a><sup>1</sup>,
-    </span>
-    </br>
-    <span class="author-block">
-    <a target="_blank">Sijie Zhao</a><sup>1</sup>,
-    </span>
-    <span class="author-block">
-    <a href="https://scholar.google.com/citations?user=6Ra2TgQAAAAJ&hl=en&oi=ao" target="_blank">Lin Song</a><sup>1</sup>,
-    </span>
-    <span class="author-block">
-    <a href="http://people.eecs.berkeley.edu/~xyyue/" target="_blank">Xiangyu Yue</a><sup>2</sup>,
-    </span>
-    <span class="author-block">
-    <a href="https://scholar.google.com/citations?user=4oXBp9UAAAAJ&hl=en&oi=ao" target="_blank">Ying Shan</a><sup>1</sup>
-    </span>
-
-</div>
-
-<div align="center">
-    <sup>1</sup> <a href='https://ai.tencent.com/' target='_blank'>Tencent AI Lab</a>
-    <sup>2</sup>
-    <a href='http://mmlab.ie.cuhk.edu.hk/' target='_blank'>The Chinese University of Hong Kong</a>&emsp;
-    </br>
-    <sup>*</sup> Equal Contribution&emsp;
-</div>
 
 [![arXiv](https://img.shields.io/badge/arxiv-2311.15599-b31b1b?style=plastic&color=b31b1b&link=https%3A%2F%2Farxiv.org%2Fabs%2F2311.15599)](https://arxiv.org/abs/2311.15599)
 [![arXiv](https://img.shields.io/badge/arxiv-2410.08049-b31b1b?style=plastic&color=b31b1b&link=https%3A%2F%2Farxiv.org%2Fabs%2F2410.08049)](https://arxiv.org/abs/2410.08049)
@@ -47,7 +12,12 @@
   <img alt="License: Apache2.0" src="https://img.shields.io/badge/LICENSE-Apache%202.0-blue.svg"/>
 </a>
 
-🌟🌟🌟 ***News***: The extended journal version of UniRepLKNet is released at [arxiv](https://arxiv.org/abs/2410.08049).
+
+<p align="center" width="100%">
+<img src="assets/UniRepLKNet.png"  width="100%" height="60%">
+</p>
+
+🌟🌟🌟 ***News***: The journal version [Scaling Up Your Kernels: Large Kernel Design in ConvNets towards Universal Representations](https://arxiv.org/abs/2410.08049) is accepted by IEEE TPAMI.
 
 
 ## Motivation 
@@ -75,23 +45,6 @@ forecasting and audio recognition tasks even without
 modality-specific customization to the architecture.
 
 **UniRepLKNet not only signifies a "comeback" for ConvNet in its original domain but also showcases large-kernel ConvNet’s potential to "conquer" new territories, highlighting further adaptability and broad utility across different modalities and tasks.**
-
-## TODOs
-
-- [x] Model code
-- [x] Most of the ImageNet-1K and ImageNet-22K pretrained weights
-- [x] Weights released on both Google Drive (see this page) and hugging face (see unireplknet.py)
-- [x] PyTorch efficient large-kernel conv implementation
-- [x] ImageNet training code
-- [x] Code and documents of audio, video, point cloud, and time-series tasks
-- [x] Semantic segmentation code, document, and all the checkpoints
-- [x] Object detection code, document, and all the checkpoints
-- [ ] Checkpoints of audio, video, point cloud, and time-series tasks
-
-The ImageNet, COCO, and ADE20K checkpoints have been released (see the huggingface repo shown below), except the ImageNet-22K pretrained UniRepLKNet-S, and UperNet with UniRepLKNet-XL, which were lost, and we are reproducing them.
-
-Latest news: fixed a bug, which results from [this commit](https://github.com/AILab-CVC/UniRepLKNet/commit/920b7251ea3d52ab476d0f40ba722db56d9a7e03) on Dec 1st, 2023. [Now it is fixed ](https://github.com/AILab-CVC/UniRepLKNet/commit/5349bcee9a8202c62c8c169220f8cc613914baac). If you used unireplknet.py after Dec 1st, 2023, please check your code.
-
 
 
 
